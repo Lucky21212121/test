@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .musicBox2_2,
+        .musicBox3_2,
+        .musicBox4_2 {
+            display: flex;
+        }
+
+        .musicBox2_2 li,
+        .musicBox3_2 li,
+        .musicBox4_2 li   {
+            display: flex;
+        }
+
+        .musicBox2_2 img,
+        .musicBox4_2 img {
+            width: 118px;
+            height: 118px;
+        }
+        .musicBox3_2 img {
+            width: 210px;
+            height: 118px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="musicBox2">
+        <div class="musicBox2_1">話題の音楽</div>
+        <div class="musicBox2_2"></div>
+    </div>
+    <div class="musicBox3">
+        <div class="musicBox3_1"> 新着ミュージックビデオ</div>
+        <div class="musicBox3_2"></div>
+    </div>
+    <div class="musicBox4">
+        <div class="musicBox4_1">新着＆トレンド</div>
+        <div class="musicBox4_2"></div>
+    </div>
+    <script>
+        let musicData1 = [{
+            url: './images/m1.png',
+            title: 'RELEASED',
+            text: 'The hottest songs this week, served up fresh every Friday. #new #newmusic #newsong',
+            counts: '50首曲目'
+
+        },
+        {
+            url: './images/m2.png',
+            title: 'The Hit List',
+            text: 'The hottest songs this week, served up fresh every Friday. #new #newmusic #newsong',
+            counts: '50首曲目'
+
+        },
+        {
+            url: './images/m3.png',
+            title: ' J-Hits!',
+            text: 'The hottest songs this week, served up fresh every Friday. #new #newmusic #newsong',
+            counts: '50首曲目'
+
+        },
+        {
+            url: './images/m4.png',
+            title: ' K.iNG',
+            text: 'The hottest songs this week, served up fresh every Friday. #new #newmusic #newsong',
+            counts: '50首曲目'
+
+        },
+        ]
+        let musicData2 = [{
+            url: './images/musicfengmian1.webp',
+            title: 'BLACKPINK - "Shut Down" M/V',
+            author: 'BLACKPINK',
+            play: '1亿次观看.5天前'
+        },
+        {
+            url: './images/musicfengmian2.webp',
+
+            title: 'BLACKPINK - "Shut Down" M/V',
+            author: 'BLACKPINK',
+            play: '1亿次观看.5天前'
+        },
+        {
+            url: './images/musicfengmian3.webp',
+
+            title: 'BLACKPINK - "Shut Down" M/V',
+            author: 'BLACKPINK',
+            play: '1亿次观看.5天前'
+        }, {
+            url: './images/musicfengmian4.webp',
+
+            title: 'BLACKPINK - "Shut Down" M/V',
+            author: 'BLACKPINK',
+            play: '1亿次观看.5天前'
+        },
+        {
+            url: './images/musicfengmian5.webp',
+
+            title: 'BLACKPINK - "Shut Down" M/V',
+            author: 'BLACKPINK',
+            play: '1亿次观看.5天前'
+        },
+        {
+            url: './images/musicfengmian6.webp',
+            title: 'BLACKPINK - "Shut Down" M/V',
+            author: 'BLACKPINK',
+            play: '1亿次观看.5天前'
+        }]
+        let musicBox2_2 = document.getElementsByClassName('musicBox2_2')
+        // console.log(musicBox2_2);
+        for (var i = 0; i < musicData1.length; i++) {
+            let lis1 = document.createElement('li');
+            lis1.innerHTML = `
+            <div class="musicBox2_2_left">
+                <img src=${musicData1[i].url} />
+                </div>
+            <div class="musicBox2_2_right">
+                <h4>${musicData1[i].title}</h4>
+                <p>${musicData1[i].text}</p>
+                <p>${musicData1[i].counts}</p>
+                </div>  
+            `;
+
+            musicBox2_2[0].appendChild(lis1);
+        }
+        console.log(musicBox2_2);
+        let musicBox3_2 = document.getElementsByClassName('musicBox3_2')
+        // console.log(musicBox2_2);
+        for (var i = 0; i < musicData2.length; i++) {
+            let lis2 = document.createElement('li');
+            lis2.innerHTML = `
+            <div class="musicBox3_2_left">
+                <img src=${musicData2[i].url} />
+                </div>
+            <div class="musicBox3_2_right">
+                <h4>${musicData2[i].title}</h4>
+                <p>${musicData2[i].author}</p>
+                <p>${musicData2[i].play}</p>
+                </div>  
+            `;
+
+            musicBox3_2[0].appendChild(lis2);
+        }
+        let musicBox4_2 = document.getElementsByClassName('musicBox4_2')
+        // console.log(musicBox2_2);
+        for (var i = 0; i < musicData1.length; i++) {
+            let lis3 = document.createElement('li');
+            lis3.innerHTML = `
+            <div class="musicBox4_2_left">
+                <img src=${musicData1[i].url} />
+                </div>
+            <div class="musicBox4_2_right">
+                <h4>${musicData1[i].title}</h4>
+                <p>${musicData1[i].text}</p>
+                <p>${musicData1[i].counts}</p>
+                </div>  
+            `;
+
+            musicBox4_2[0].appendChild(lis3);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button id="paixu">排序</button>
+        <input type="text" />
+        <button>搜索(只能查名字)</button>
+    </div>
+    <table>
+        <thead id="one">
+        </thead>
+        <tbody id="two"></tbody>
+    </table>
+
+</body>
+<script>
+    const listHead = [{
+
+        name: '姓名'
+    },
+    {
+
+        name: '科目'
+    },
+    {
+
+        name: '成绩'
+    },
+    {
+
+        name: '操作'
+    }];
+    const listBody = [{
+        name: '伟伟桑',
+        kemu: '数学',
+        score: 0
+
+    },
+    {
+        name: '哲哲',
+        kemu: '数学',
+        score: 100
+
+    },
+    {
+        name: '伟',
+        kemu: '数学',
+        score: 3
+
+    },
+    {
+        name: '伟桑',
+        kemu: '数学',
+        score: 3
+
+    },
+    {
+        name: '伟伟',
+        kemu: '数学',
+        score: 12
+
+    }
+    ]
+    let one = document.getElementById('one');
+    // console.log(one);
+    for (let i = 0; i < listHead.length; i++) {
+        // console.log(i);
+        // console.log(listHead[i].name);
+        let th = document.createElement('th');
+        th.innerHTML = listHead[i].name;
+        // console.log(th);
+        one.appendChild(th);
+
+    }
+
+
+
+    let two = document.getElementById('two');
+    // console.log(two);
+    for (let i = 0; i < listBody.length; i++) {
+        let tr = document.createElement('tr');
+        two.appendChild(tr);
+        // console.log(listBody[i]);
+        for (k in listBody[i]) {
+            // console.log(k);
+            // console.log(listBody[i][k]);
+            let td = document.createElement('td');
+            td.innerHTML = listBody[i][k];
+            tr.appendChild(td);
+        }
+        let td1 = document.createElement('td');
+        td1.innerHTML = '删除';
+        td1.className='bipao';
+
+        tr.appendChild(td1);
+        console.log(td1);
+
+    }
+    let bipao = document.getElementsByClassName('bipao');
+    console.log(bipao);
+    for (let i=0;i<bipao.length;i++){
+        bipao[i].onclick=function(){
+            console.log(this.parentNode);
+            two.removeChild(this.parentNode);
+            
+        }
+    }
+    let paixu=document.getElementById('paixu');
+    paixu.onclick=function(){
+
+
+        for(var i =0;i<listBody.length;i++){
+           for(let j =0;j<listBody.length-i-1;j++){
+            console.log(listBody[j]);
+            if(listBody[j].score<listBody[j+1].score){
+                let time = listBody[j]
+                listBody[j]=listBody[j+1]
+                listBody[j+1]=time
+
+            }
+          
+            
+
+            
+    // console.log(two);
+
+           }
+        }
+        
+        for (let i = 0; i < listBody.length; i++) {
+        let tr = document.createElement('tr');
+        two.appendChild(tr);
+        // console.log(listBody[i]);
+        for (k in listBody[i]) {
+            // console.log(k);
+            // console.log(listBody[i][k]);
+            let td = document.createElement('td');
+            td.innerHTML = listBody[i][k];
+            tr.appendChild(td);
+        }
+        let td1 = document.createElement('td');
+        td1.innerHTML = '删除';
+        td1.className='bipao';
+
+        tr.appendChild(td1);
+        console.log(td1);
+
+    }
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

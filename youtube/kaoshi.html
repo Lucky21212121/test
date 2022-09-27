@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .tab_list {
+        display: flex;
+        justify-content: space-around;
+        width: 800px;
+      }
+      li {
+        list-style: none;
+      }
+
+      .yyy {
+        background-color: black;
+        color: #fff;
+      }
+      .xxx {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <ul class="tab_list"></ul>
+    </div>
+    <div class="tab_con"></div>
+  </body>
+  <script>
+    let data1 = [
+      {
+        title: "音乐",
+        content: "111111111111111",
+      },
+      {
+        title: "音乐",
+        content: "222222222222222222",
+      },
+      {
+        title: "音乐",
+        content: "3333333333333333333",
+      },
+      {
+        title: "音乐",
+        content: "4444444444444444444",
+      },
+      {
+        title: "音乐",
+        content: "55555555555555555555",
+      },
+      {
+        title: "音乐",
+        content: "6666666666666666666666661",
+      },
+      {
+        title: "音乐",
+        content: "777777777777777777777",
+      },
+    ];
+    let tab_list = document.getElementsByClassName("tab_list");
+    // console.log(tab_list);
+    for (var i = 0; i < data1.length; i++) {
+      // console.log(data1[i]);
+      let lis = document.createElement("li");
+      lis.innerHTML = `${data1[i].title}`;
+      // console.log(data1[i].title);
+      tab_list[0].appendChild(lis);
+    }
+
+    let tab_con = document.getElementsByClassName("tab_con");
+    // console.log(tab_con);
+    for (var i = 0; i < data1.length; i++) {
+      let divs = document.createElement("div");
+      divs.innerHTML = `${data1[i].content}`;
+      // console.log(data1[i].content);
+      tab_con[0].appendChild(divs);
+    }
+
+    // console.log(tab_list[0]);
+    let tab_listChild = tab_list[0].children;
+    // console.log(tab_listChild);
+
+    // console.log(tab_con);
+    let tab_conChild = tab_con[0].children;
+    // console.log(tab_conChild);
+    for (var i = 0; i < tab_conChild.length; i++) {
+      //    console.log( tab_conChild[i]);
+      tab_conChild[i].className = "xxx";
+    }
+
+    for (var i = 0; i < tab_listChild.length; i++) {
+      // console.log(tab_listChild[i]);
+
+      tab_listChild[i].setAttribute("index", i);
+      let index = tab_listChild[i].getAttribute("index")
+      
+    //   console.log(index);
+
+      tab_listChild[i].onclick = function () {
+        for (var i = 0; i < tab_listChild.length; i++) {
+          tab_listChild[i].className = "";
+        }
+
+        this.className = "yyy";
+
+
+        
+
+        
+        for (var j = 0; j < tab_conChild.length; j++) {
+          tab_conChild[j].style.display = "none";
+        }
+
+        tab_conChild[index].style.display = "block";
+      }
+
+    }
+  </script>
+</html>

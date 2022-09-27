@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      li {
+        list-style: none;
+        padding: 0 15px;
+      }
+      ul {
+        display: flex;
+        width: 600px;
+      }
+      .old {
+        background-color: #fff;
+        color: black;
+      }
+      .new {
+        background-color: pink;
+        color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab_list">
+      <ul></ul>
+    </div>
+    <div class="tab_con"></div>
+    <script>
+      const data = [
+        {
+          title: "one",
+          content: "一闪一闪亮晶晶",
+        },
+        {
+          title: "two",
+          content: "两只老虎跑得快",
+        },
+        {
+          title: "three",
+          content: "三只兔子爱跳舞",
+        },
+        {
+          title: "fourth",
+          content: "一闪一闪亮晶晶4",
+        },
+        {
+          title: "five",
+          content: "一闪一闪亮晶晶5",
+        },
+        {
+          title: "six",
+          content: "一闪一闪亮晶晶6",
+        },
+        {
+          title: "seven",
+          content: "一闪一闪亮晶晶7",
+        },
+      ];
+      // tab_list部分
+      let tab_list = document.getElementsByClassName("tab_list");
+      //   console.log(tab_list);
+      let ul = tab_list[0].children;
+      //   console.log(ul);
+      for (var i = 0; i < data.length; i++) {
+        let lis = document.createElement("li");
+        // console.log(lis);
+        lis.innerHTML = `${data[i].title}`;
+        // console.log(data[i].title);
+        ul[0].appendChild(lis);
+      }
+
+      // tab_con 部分
+
+      let tab_con = document.getElementsByClassName("tab_con");
+      //   console.log(tab_con);
+      for (var i = 0; i < data.length; i++) {
+        let divs = document.createElement("div");
+        // console.log(divs);
+        divs.innerHTML = `${data[i].content}`;
+        // console.log(data[i].content);
+        tab_con[0].appendChild(divs);
+      }
+      // 设置tab_con部分的div样式隐藏
+      //   console.log(tab_con[0].children);
+      let tab_conChild = tab_con[0].children;
+      //   console.log(tab_conChild);
+      for (var i = 0; i < tab_conChild.length; i++) {
+        tab_conChild[i].style.display = "none";
+      }
+
+      //  设置点击事件
+      let ulChild = ul[0].children;
+      //   console.log(ulChild);
+      for (var i = 0; i < ulChild.length; i++) {
+        ulChild[i].setAttribute("index", i);
+        let index = ulChild[i].getAttribute("index");
+        console.log(index);
+
+        // console.log(ulChild[i]);
+        ulChild[i].onclick = function () {
+          for (var i = 0; i < ulChild.length; i++) {
+            ulChild[i].className = "old";
+          }
+          this.className = "new";
+
+
+
+          for (var i = 0; i < tab_conChild.length; i++) {
+            tab_conChild[i].style.display = "none";
+          }
+          tab_conChild[index].style.display = "block";
+
+
+        };
+      }
+    </script>
+  </body>
+</html>

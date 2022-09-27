@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+
+        .aaa {
+            display: flex;
+        }
+
+        .aaa li {
+            width: 20px;
+            border: 1px solid skyblue;
+        }
+
+        .x {
+            background-color: black;
+            color: #fff;
+        }
+
+        .xxx {
+            display: none;
+        }
+    </style>
+</head>
+
+//所以涉及到多个都用循环
+
+<body>
+    <div class="box">
+        <div class="one">
+            <ul class="aaa">
+
+            </ul>
+        </div>
+        <div class="two">
+
+        </div>
+    </div>
+    <script>
+        let data1 = [{
+            title: '1',
+            content: '1111111111111111111111111111'
+        },
+        {
+            title: '2',
+            content: '222222222222222222222222222222222'
+
+        },
+        {
+            title: '3',
+            content: '333333333333333333333333333333333333'
+
+        },
+        {
+            title: '4',
+            content: '4444444444444444444444444444444444'
+
+        },
+        {
+            title: '5',
+            content: '555555555555555555555555555555555555'
+
+        },
+        ]
+        let aaa = document.getElementsByClassName('aaa');
+        for (var i = 0; i < data1.length; i++) {
+            let lis = document.createElement('li');
+            lis.innerHTML = `${data1[i].title}`;
+            console.log(data1[i].title);
+
+            aaa[0].appendChild(lis);
+
+        }
+        let two = document.getElementsByClassName('two'); //这不是你获得他们的爸爸数组
+        console.log(two);
+        for (var i = 0; i < data1.length; i++) {
+            let divs = document.createElement('div');
+            divs.innerHTML = `${data1[i].content}`;
+            console.log(data1[i].content);
+            two[0].appendChild(divs);
+
+        }
+        //写点击切换啊  老子喝水
+        //这种直接复制页面看的到打字容易错 这样对吗
+        //你在仔细看看你打印的aaa是啥 z
+
+
+
+
+        //在这里写都分开点看着也好理解  循环加类名啊你都拿到数组了不循环
+
+        let twochild = two[0].children;
+        console.log(twochild);
+        for (var i = 0; i < twochild.length; i++) {
+            twochild[i].className = 'xxx';
+        }
+
+
+
+
+
+        console.log(aaa, 'xxx');
+        let aaaChild = aaa[0].children;
+        console.log(aaaChild, '这就是对象,这是dom对象,但是也是对象', aaa[0]);
+        for (var i = 0; i < aaaChild.length; i++) {
+
+            aaaChild[i].setAttribute('index', i);
+
+            //写完代码先干嘛 我还没写完啊你上面的for写完了为啥不打印 打印什么呢 i++ i在变化你肯定打印变量啊
+            console.log(aaaChild[i]);
+            console.log(i);
+
+            aaaChild[i].onclick = function () {
+                //如果是在函数里面可以用this来取 比如this.classname='x'xxx
+                //先别换写功能先测试看看点击加点style加点class看看
+                for (var i = 0; i < aaaChild.length; i++) {
+                    aaaChild[i].className = '';
+                }
+                this.className = 'x';
+                let index = this.getAttribute('index');
+
+                for (var i = 0; i < twochild.length; i++) {
+                    twochild[i].style.display = 'none';
+                }
+                twochild[index].style.display = 'block';
+
+
+            }
+
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

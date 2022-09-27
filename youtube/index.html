@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="tubiao">
+        <a href="#">
+          <div class="first">
+            <img src="./images/001.png" alt="" />
+          </div>
+        </a>
+        <a href="#">
+          <div class="second">
+            <div class="second_1">
+              <img src="./images/002.png" alt="" /> YouTube
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="sousuokuang">
+        <input type="text" value="搜索" />
+        <button><img src="./images/003.png" alt="" /></button>
+        <a href="#">
+          <div class="huatong"><img src="./images/005.png" alt="" /></div>
+        </a>
+      </div>
+      <div class="denglu">
+        <a href="#">
+          <div class="shezhi">
+            <img src="./images/004.png" alt="" />
+          </div>
+        </a>
+        <a href="#">
+          <div class="denglu_1"><img src="./images/006.png" alt="" />登录</div>
+        </a>
+      </div>
+    </header>
+    <div class="box">
+      <div class="left"></div>
+      <div class="right">
+        <div class="r_up">
+          <div class="r_up_1">
+            <ul id="ccc"></ul>
+          </div>
+        </div>
+        <!-- 这是你第一个盒子 -->
+        <div class="boxCenter shoow">
+          <div id="r_list1"></div>
+        </div>
+        <div class="shoow boxCenterSec">
+          <div class="r_list2"></div>
+        </div>
+
+        <div class="shoow boxCenterThi">
+          <div class="r_list3"></div>
+        </div>
+        <div class="shoow boxCenterFou">
+          <div class="r_list4"></div>
+        </div>
+        <div class="shoow">
+            <div class="r_list5"></div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // 数据
+    let newdata = [
+      {
+        title: "全部",
+        template: "1111",
+      },
+      {
+        title: "音乐",
+        template: "222",
+      },
+      {
+        title: "直播",
+        template: "333",
+      },
+      {
+        title: "游戏",
+        template: "4444",
+      },
+      {
+        title: "卡通",
+        template: "555",
+      },
+      {
+        title: "自然",
+        template: "555",
+      },
+      {
+        title: "最近上传的内容",
+        template: "555",
+      },
+      {
+        title: "已观看",
+        template: "555",
+      },
+    ];
+
+    let lis = [
+      {
+        key: 1,
+        name: "首页",
+        url: "./images/007.png",
+      },
+      {
+        key: 2,
+        name: "探索",
+        url: "./images/008.png",
+      },
+      {
+        key: 3,
+        name: "shorts",
+        url: "./images/009.png",
+      },
+      {
+        key: 4,
+        name: "订阅内容",
+        url: "./images/010.png",
+      },
+      {
+        key: 5,
+        name: "媒体库",
+        url: "./images/012.png",
+      },
+      {
+        key: 6,
+        name: "历史记录",
+        url: "./images/011.png",
+      },
+    ];
+
+    const listBodyFirst = [
+      {
+        url1: "./images/fengmian001.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian002.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian003.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian004.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian005.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian006.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian007.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian008.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+    ];
+    const listBodySecond = [
+      {
+        url1: "./images/music01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/music01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+
+      {
+        url1: "./images/music01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/music01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/music01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/music01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/music01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+    ];
+    const listBodyThird = [
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/zhibo.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+    ];
+    const listBodyFourth = [
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/youxifengmian01.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+    ];
+    const listBodyFifth = [
+      {
+        url1: "./images/fengmian001.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian002.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian003.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian004.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian005.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian006.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian007.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+      {
+        url1: "./images/fengmian008.webp",
+        url2: "./images/touxiang001.jpg",
+        title: 'BLACKPINK-"Yeah Yeah Yeah"M/V',
+        author: "anonlikes",
+      },
+    ];
+   
+    // 左边滑动区域
+    let leftBox = document.getElementsByClassName("left");
+    // console.log(leftBox);
+    for (let i = 0; i < lis.length; i++) {
+      let li = document.createElement("li");
+
+      li.innerHTML = ` <div class="benbenroutuo"> <Img src=${lis[i].url} class="xximg" /> <p class="xxp">${lis[i].name}</p ></div> `;
+
+      leftBox[0].appendChild(li);
+      // console.log(lis[i]);
+    }
+
+    let shabizhangwei = document.createElement("div");
+    let sahbi = "123344";
+    shabizhangwei.innerHTML = `登录即可顶视频、发表评论和订阅内容。`;
+    leftBox[0].appendChild(shabizhangwei);
+    // console.log(leftBox[0], 'xxx');//自己点开看看里面有啥  给我取这个的你要的元素
+
+    let children = leftBox[0].children;
+    let twochiden = leftBox[0]["chilredn"];
+    // console.log(children);
+    // console.log(children[3]);
+    children[3].className = "shabi";
+
+    let a = { name: 1 }; //怎么取这个name?
+    // console.log(a['name'], a.name)
+
+    // 首先你先获取他们的爸爸元素写你来写 已经
+    //然后你获取这个元素的的儿子元素写
+    // let children=
+
+
+    // 右边box区域
+    // 第一个盒子
+    let rightBox1 = document.getElementById("r_list1");
+    for (let i = 0; i < listBodyFirst.length; i++) {
+      let list = document.createElement("li");
+      // console.log(lis,listBodyFirst[i].url,'buxingnikan');
+      // listBodyFirst[i].url// 这东西就是一个变量是你循环出来的东西
+
+      list.innerHTML = `
+        <div class="firstBox">
+            <Img src=${listBodyFirst[i].url1} class="fengmian" /> 
+            <div class="xiangqing">
+                <Img src=${listBodyFirst[i].url2} class="touxiang" />
+                    <div>
+                    <h4>${listBodyFirst[i].title}</h4> 
+                    <p>${listBodyFirst[i].author}</p>
+                    </div>
+            </div> 
+        </div>`;
+
+      rightBox1.appendChild(list);
+      // console.log(rightBox);
+
+      // console.log(list);
+    }
+    //    第二个盒子
+    let r_list2 = document.getElementsByClassName("r_list2");
+    for (let i = 0; i < listBodySecond.length; i++) {
+      let list2 = document.createElement("li");
+      // console.log(lis,listBodyFirst[i].url,'buxingnikan');
+      // listBodyFirst[i].url// 这东西就是一个变量是你循环出来的东西
+
+      list2.innerHTML = `
+        <div class="firstBox">
+            <Img src=${listBodySecond[i].url1} class="fengmian" /> 
+            <div class="xiangqing">
+                <Img src=${listBodySecond[i].url2} class="touxiang" />
+                    <div>
+                    <h4>${listBodySecond[i].title}</h4> 
+                    <p>${listBodySecond[i].author}</p>
+                    </div>
+            </div> 
+        </div>`;
+
+      r_list2[0].appendChild(list2);
+      // console.log(rightBox);
+
+      // console.log(list);
+    }
+     // 第三个盒子
+    let r_list3 = document.getElementsByClassName("r_list3");
+    for (let i = 0; i < listBodyThird.length; i++) {
+      let list3 = document.createElement("li");
+      // console.log(lis,listBodyFirst[i].url,'buxingnikan');
+      // listBodyFirst[i].url// 这东西就是一个变量是你循环出来的东西
+
+      list3.innerHTML = `
+        <div class="firstBox">
+            <Img src=${listBodyThird[i].url1} class="fengmian" /> 
+            <div class="xiangqing">
+                <Img src=${listBodyThird[i].url2} class="touxiang" />
+                    <div>
+                    <h4>${listBodyThird[i].title}</h4> 
+                    <p>${listBodyThird[i].author}</p>
+                    </div>
+            </div> 
+        </div>`;
+
+      r_list3[0].appendChild(list3);
+    }
+    //    第四个盒子
+    let r_list4 = document.getElementsByClassName("r_list4");
+    for (let i = 0; i < listBodyFourth.length; i++) {
+      let list4 = document.createElement("li");
+      // console.log(lis,listBodyFirst[i].url,'buxingnikan');
+      // listBodyFirst[i].url// 这东西就是一个变量是你循环出来的东西
+
+      list4.innerHTML = `
+        <div class="firstBox">
+            <Img src=${listBodyFourth[i].url1} class="fengmian" /> 
+            <div class="xiangqing">
+                <Img src=${listBodyFourth[i].url2} class="touxiang" />
+                    <div>
+                    <h4>${listBodyFourth[i].title}</h4> 
+                    <p>${listBodyFourth[i].author}</p>
+                    </div>
+            </div> 
+        </div>`;
+
+      r_list4[0].appendChild(list4);
+    }
+     // 第五个盒子
+    let r_list5 = document.getElementsByClassName("r_list5");
+    for (let i = 0; i < listBodyFifth.length; i++) {
+      let list5 = document.createElement("li");
+      // console.log(lis,listBodyFirst[i].url,'buxingnikan');
+      // listBodyFirst[i].url// 这东西就是一个变量是你循环出来的东西
+
+      list5.innerHTML = `
+        <div class="firstBox">
+            <Img src=${listBodyFifth[i].url1} class="fengmian" /> 
+            <div class="xiangqing">
+                <Img src=${listBodyFifth[i].url2} class="touxiang" />
+                    <div>
+                    <h4>${listBodyFifth[i].title}</h4> 
+                    <p>${listBodyFifth[i].author}</p>
+                    </div>
+            </div> 
+        </div>`;
+
+      r_list5[0].appendChild(list5);
+    }
+    // 右边tab区域
+    let ccc = document.getElementById("ccc");
+    // console.log(ccc);
+
+    var aaa = "xxx";
+    for (let i = 0; i < newdata.length; i++) {
+      let ppp = document.createElement("li");
+      // console.log(lis,listBodyFirst[i].url,'buxingnikan');
+      // listBodyFirst[i].url// 这东西就是一个变量是你循环出来的东西
+
+      ppp.innerHTML = `<a href="#">${newdata[i].title}</a>
+       `;
+
+      ccc.appendChild(ppp);
+    }
+    // console.log(ccc);
+    let list1 = ccc.getElementsByTagName("li");
+    list1[0].className = "current";
+    let shoow = document.getElementsByClassName("shoow");
+    console.log(shoow);
+    shoow[0].style.display = "block";
+    // tab区域的点击事件
+    // console.log(list1[0]);
+    for (var i = 0; i < list1.length; i++) {
+      list1[i].setAttribute("index", i);
+      list1[i].onclick = function () {
+        for (var i = 0; i < list1.length; i++) {
+          list1[i].className = "";
+        }
+        this.className = "current";
+        let index = this.getAttribute("index");
+        for (var i = 0; i < shoow.length; i++) {
+          shoow[i].style.display = "none";
+        }
+        shoow[index].style.display = "block";
+      };
+    }
+  </script>
+</html>
