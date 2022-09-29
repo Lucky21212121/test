@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        // 1 数组(array):一组数据的集合,存储在单个变量下的优雅方式
+        // 2  利用new创建数组
+        var arr = new Array(); // 创建了一个空的数组
+        // 3 利用数组字面量创建数组 []
+        var arr = []; // 创建了一个空的数组
+        var arr1 = [1, 2, 3, '伟伟', true]
+        // 4 数组里面的数据用,隔开
+        // 5 数组里面的数据成为数组元素
+        // 6 获取(访问)数组元素 数组名[索引号]
+        console.log(arr1);
+        console.log(arr1[3]);// 伟伟
+        var arr2 = [111, 222, 333, 444]
+        console.log(arr2[0]);
+        console.log(arr2[1]);
+        console.log(arr2[2]);
+        console.log(arr2[3]);
+        console.log(arr2[4]);
+        // 7 遍历数组:把数组的元素 从头到尾访问一次
+        var arr3 = ['red', 'green', 'blue'];
+        for (var i = 0; i < 3; i++) {
+            console.log(arr3[i]);
+        }
+        var arr4 = ['关羽', '张飞', '马超', '赵云', '黄忠', '刘备', '姜维', '伟伟'];
+        for (var i = 0; i < arr4.length; i++) {
+            console.log(arr4[i]);
+        }
+        console.log(arr4.length);
+        // 数组的长度是元素个数,不要跟索引号混淆
+        // 案例  求和,平均数
+        var arr5 = [2, 6, 1, 7, 4];
+        var sum = 0;
+        var average = 0;
+        for (var i = 0; i < arr5.length; i++) {
+            sum += arr5[i]; // 我们加的是数组元素 arr5[i],不是计数器i
+        }
+        average = sum / arr5.length;
+        console.log(sum, average);
+        // 求数组中的最大值
+        var arr6 = [2, 6, 1, 77, 52, 25, 7];
+        var max = arr6[0];
+        for (var i = 1; i < arr6.length; i++) {
+            if (arr6[i] > max) {
+                max = arr6[i];
+            }
+        }
+        console.log('该数组里面的最大值是:' + max);
+        var min = arr6[0];
+        for (var i = 1; i < arr6.length; i++) {
+            if (arr6[i] < min) {
+                min = arr6[i];
+            }
+        }
+        console.log('该数组里面的最小值是:' + min);
+        // 将数组转换为字符串
+        var arr7 = ['red', 'green', 'blue', 'pink'];
+        var str = '';
+        var sep = '&';
+        for (var i = 0; i < arr7.length; i++) {
+            str += arr7[i] + sep;
+
+        }
+        console.log(str);
+
+        // 数组中新增元素
+        // 1 通过修改length长度
+        var arr8 = ['red', 'green', 'blue'];
+        console.log(arr8.length);
+        arr8.length = 5;
+        console.log(arr8);
+        console.log(arr8[3], arr8[4]);
+        // 2 通过修改索引号 追加或替换
+        var arr9 = ['red', 'green', 'blue'];
+        arr9[3] = 'pink';
+        console.log(arr9);
+        arr9[0] = 'yellow';
+        console.log(arr9);
+        arr9 = '有点意思'
+        console.log(arr9); // 不要直接给数组名赋值  会覆盖之前的元素
+        // 数组存放1-100个值
+        var arr10 = [];
+        for (var i = 0; i < 100; i++) {
+            arr10[i] = i + 1;
+        }
+        console.log(arr10);
+
+        // 筛选数组
+        // 方法1
+        var arr11 = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var newArr = [];
+        var j = 0;
+        for (var i = 0; i < arr11.length; i++) {
+            if (arr11[i] > 10) {
+                newArr[j] = arr11[i];
+                j++;
+            }
+        }
+        console.log(newArr);
+        // 方法2
+        var arr12 = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var newArr1 = [];
+        
+        for (var i = 0; i < arr12.length; i++) {
+            if (arr12[i] > 10) {
+                newArr1[newArr1.length] = arr12[i];
+
+            }
+        }
+        console.log(newArr1);
+    </script> -->
+    <script>
+        // 数组案例
+        var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var newArr = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] !== 0) {
+                newArr[newArr.length] = arr[i];
+            }
+        }
+        console.log(newArr);
+        // 翻转数组
+        var arr2 = ['red', 'green', 'blue', 'pink', 'purple'];
+        var newArr1 = [];
+        for (var i = arr2.length - 1; i >= 0; i--) {
+            newArr1[newArr1.length] = arr2[i]
+        }
+        console.log(newArr1);
+
+        // 冒泡排序
+        // 复习交换两个变量
+        var num1 = 10;
+        var num2 = 20;
+        var temp;
+        temp = num1;
+        num1 = num2;
+        num2 = temp;
+        console.log(num1, num2);
+        // 冒泡排序
+        // var arr3 = [5, 4, 3, 2, 1];
+        var arr3 = [4, 5, 1, 3, 2];
+        for (var i = 0; i < arr3.length - 1; i++) { // 外层循环管趟数
+            for (var j = 0; j < arr3.length - i - 1; j++) {// 里层循环管每一趟交换的次数
+                // 内部交换两个变量的值 前一个和后一个数组元素相比较
+                if (arr3[j] > arr3[j + 1]) {
+                    var temp = arr3[j];
+                    arr3[j] = arr3[j + 1];
+                    arr3[j + 1] = temp;
+                }
+
+
+            }
+
+        }
+        console.log(arr3);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

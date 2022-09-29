@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        //算数运算符
+        console.log(1 + 1);
+        console.log(1 - 1);
+        console.log(1 * 1);
+        console.log(1 / 1);
+        // 1. % 取余(取模)
+        console.log(4 % 2);// 0
+        console.log(5 % 3); // 2
+        console.log(3 % 5); // 3
+        //2 浮点数 算数运算里面会有问题
+        console.log(0.1 + 0.2); //   0.30000000000000004
+        console.log(0.07 * 100); //  7.000000000000001
+        // 3 我们不能直接拿着浮点数来进行相比较 是否相等
+        var num = 0.1 + 0.2;
+        console.log(num == 0.3); // false
+
+    </script> -->
+    <!-- <script>
+        // 由数字 运算符 变量等组成的式子 称为 表达式 1 + 1
+        console.log(1 + 1); // 2 就是返回值
+        // 1 + 1 =2
+        // 在程序里面 2 = 1 + 1 把我们右边的表达式计算完毕,把返回值给左边
+        var num = 1 + 1;
+        console.log(num);
+    </script> -->
+    <!-- <script>
+        //递增和递减运算符
+        // 1 .想要一个变量自己加1
+        var num = 1;
+        num = num + 1; // ++num
+        num = num + 1;
+        console.log(num); // 3
+        // 2. 前置递增运算符 ++写在变量的前面
+        var age = 10;
+        ++age; // 类似于age= age + 1
+        console.log(age);
+        // 3 .先加1,再返回值
+        var p = 10;
+        console.log(++p + 10); // 20
+        // 4.后置递增运算符 ++写在变量的后面
+        var num1 = 10;
+        num1++; // 类似于 num1 = num1 + 1
+        console.log(num1);
+        // 5. 前置递增和后置递增如果单独使用,效果是一样的
+        // 6. 后置自增-口诀: 先返回原值,后自加1
+        var age1 = 10;
+        console.log(age1++ + 10); // 20
+        console.log(age1);
+        //练习
+        var a = 10;
+        ++a; // ++a  11 a=11
+        var b = ++a + 2; // a=12 ++a =12
+        console.log(b); //14
+        var c = 10;
+        c++;// c=11
+        var d = c++ + 2;// c++ =11 c=12
+        console.log(d); //13
+        var e = 10;
+        var f = e++ + ++e; // e=11, ++e 11 
+        console.log(f);//22
+        //后置自增,先表达式返回原值,后面变量在自加1;
+    </script> -->
+    <!-- <script>
+        // 比较运算符
+        console.log(3 >= 5); //false
+        console.log(2 <= 4); // true
+        //1 == 默认转换数据类型,会把字符串类型的数据转换为数字型 只要求值相等
+        console.log(3 == 5);// false
+        console.log(18 == 18);//true
+        console.log(18 == '18');// true 
+        console.log(18 != 18);//false
+        //2 全等 === 一模一样 要求两侧的值 数据类型完全一致
+        console.log(18 === 18); //true
+        console.log(18 === '18'); // false
+    </script> -->
+
+    <!-- <script>
+        // 逻辑运算符 (布尔运算符)
+        // 1 逻辑 与 && 两侧都为true 结果才是true 只要有一测为false 结果就为false
+        console.log(3 > 5 && 3 > 2);// false
+        console.log(3 < 5 && 3 > 2);// true
+        //2 逻辑 或 || or 两侧都为false 结果才是false 只要有一侧为true 结果就是true
+        console.log(3 > 5 || 3 > 2); // true
+        console.log(3 > 5 || 3 < 2); // false
+        // 3 逻辑 非 ! not 
+        console.log(!true); // false
+        // 逻辑运算符联系
+        var num = 7;
+        var str = "我爱你~中国~"
+        console.log(num > 5 && str.length >= num); // true
+        console.log(num < 5 && str.length >= num); // false
+        console.log(!(num < 10)); //flase
+        console.log(!(num < 10 || str.length == num)); // false
+    </script> -->
+    <!-- 
+    <script>
+        // 123 && 456 值或表达式参与逻辑运算
+        //1 逻辑 与 短路运算 如果表达式1为true, 则返回表达式2;如果表达式1为false,测返回表达式2
+        console.log(123 && 456); //456
+        console.log(0 && 456);//0
+        console.log(0 && 1 + 2 && 456 * 6789);//0
+        console.log('' && 1 + 2 && 456 * 6789);//
+        console.log(null && 1 + 2 && 456 * 6789);//0
+        // 如果有空的或否定的为假 其余都是真
+        // 2 逻辑 或 短路运算 如果表达式1结果为真,则返回表达式1 ;如果表达式1结果为假,则返回表达式2
+        console.log(123 || 456); //123
+        console.log(123 || 456 || 123 + 456); //123
+        console.log(0 || 456); //456
+        console.log(0 || 456 || 123 + 456); //456
+        //逻辑中断很重要 会影响程序的运行结果
+        var num = 0;
+        console.log(123 || num++); //123
+        console.log(num); // 0 
+    </script> -->
+
+    <!-- <script>
+        // 赋值预算符
+        var num = 10;
+        // num = num + 1; num++
+        //num = num + 2; // num += 2;
+        // num += 2;
+        num += 5;
+        console.log(num);
+        var age = 2;
+        age *= 3;
+        console.log(age);
+
+    </script> -->
+    <script>
+        //运算符的优先级
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

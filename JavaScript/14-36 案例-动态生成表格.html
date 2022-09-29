@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        // 1 准备好学生的数据
+        var datas = [{
+            name: '魏璎珞',
+            subject: 'JavaScript',
+            score: 100
+        },
+        {
+            name: '弘历',
+            subject: 'JavaScript',
+            score: 98
+        },
+        {
+            name: '伟伟',
+            subject: 'JavaScript',
+            score: 100
+        },
+        {
+            name: '哲哲',
+            subject: 'JavaScript',
+            score: 100
+        }
+            ,
+        {
+            name: '哲哲',
+            subject: 'JavaScript',
+            score: 100
+        }
+        ];
+        // 2 在tbody里面 创建行 :有几个人(通过数组的长度)就创建几行
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) { //外面的for循环管行 tr
+            //  创建tr行
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            // 3-1 行里面创建单元格 (跟数据有关系的3个单元格)td  单元格的对象取决于每个对象里面的属性个数 for循环遍历对象
+            for (var k in datas[i]) { // 里面的for循环管列 
+                // 创建单元格
+                var td = document.createElement('td');
+                // 把对象里面的属性值给 td
+                //   console.log(k);
+                //   console.log(datas[i][k]);
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+            }
+            //  3-2 创建有删除2个字的单元格
+            var td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">删除</a>';
+            tr.appendChild(td);
+
+
+        }
+        // 4 删除操作
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                //  点击a 删除当前 a 所在的行(连接的爸爸的爸爸)node.removeChild(child);
+                tbody.removeChild(this.parentNode.parentNode)
+            }
+        }
+        // for(var k in obj) {
+        //     k 得到的是属性名
+        //     obj[k] 得到是属性值
+        // }
+    </script>
+</body>
+
+</html>

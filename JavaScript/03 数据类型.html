@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script>
+        // int num = 10; java
+        //var num; //这里的num,我们是不确定属于哪种数据类型的
+        var num = 10; //num属于数字型
+        // js 的变量数据类型是 只有在程序运行过程中,根据等号右边的值来确定的
+        var str = 'pink'; // str 是字符串型
+        //js是动态语言,变量的数据类型是可以变化的
+    </script> -->
+    <!-- <script>
+        var num = 10;//num 数字型
+        var PI = 3.14; //PI 数字型
+        //1.八进制 0~7  我们程序里面数字前面加0 表示八进制
+        var num1 = 010;
+        console.log(num1);  // 010 八进制 转换为十进制 就是 8
+        var num2 = 012;
+        console.log(num2);
+        //2 十六进制 0~9 a~f  #ffffff   数字的前面加 0x 表示十六进制
+        var num3 = 0x9;
+        console.log(num3);
+        var num4 = 0xa;
+        console.log(num4);
+        // 3.数字型的最大值
+        console.log(Number.MAX_VALUE);
+        //4.数字型的最小值
+        console.log(Number.MIN_VALUE);
+        //5. 无穷大
+        console.log(Number.MAX_VALUE*2); // Infinity
+        // 6 无穷小
+        console.log(-Number.MAX_VALUE*2); //-Infinity
+        // 7 非数字
+        console.log('pink老师'-100);  // NaN
+        
+    </script> -->
+    <!-- <script>
+        // isNaN ()这个方法用来判断非数字 并且返回一个值,如果数字返回的是false;如果不是数字返回的是 true
+        console.log(isNaN(12)); // false
+        console.log(isNaN('伟伟')); // true
+    </script> -->
+    <!-- <script>
+        // 'pink' 'pink老师' '12' 'true' 字符串类型 推荐使用单引号'' 外单内双,外双内单
+        var str ='我是一个"白富美"的程序媛';
+        console.log(str);
+        // 字符串转义字符 都是用\开头,并且写在引号里面
+        var str1 ="我是一个'白富美'的\n程序媛";
+        console.log(str1);
+    </script> -->
+    <!-- <script>
+        alert('酷热难耐,火辣的太阳底下,我挺拔的身姿,成为了最独特的风景。\n我审视四周，这里，是我的舞台，我就是天地间的王者。\n这一刻，我豪气冲天，终于大喊一声："收破烂啦~"');
+    </script> -->
+    <!-- <script>
+        //1 检测获取字符串的长度 length
+        var str = 'my name is pink';
+        console.log(str.length); //15
+        //2 字符串的拼接 + 只要有字符串与其他类型相拼接,最后的结果是字符串类型;数值相加,字符相连
+        console.log('沙漠' + '骆驼');//字符串的 沙漠骆驼
+        console.log('伟伟桑' + 18); // 伟伟桑18
+        console.log('pink' + 'false');
+        console.log(12 + 12); //24
+        console.log('12' + 12);//1212
+        console.log('伟伟桑' + 18 + '岁');
+        var age = 19;
+        console.log('伟伟桑'+age+'岁');
+        // 变量和字符串相连的口诀:引引相加
+        console.log('伟伟桑'+age+'岁');
+    </script> -->
+    <!-- <script>
+        var age = prompt('请输入您的年龄')
+        var str = '您今年已经' + age + '岁啦'
+        alert(str)
+
+    </script> -->
+    <!-- <script>
+        var flag = true; // flag 布尔型
+        var flag1 = false; // flag1 布尔型
+        console.log(flag+1); //true 参与加法运算 当1 来看
+        console.log(flag1+1); //false 参与加法运算 当0来看
+        // 如果一个变量声明未赋值,就是 undefined 未定义数据类型
+        var str;
+        console.log(str);
+        var variable=undefined;
+        console.log(variable+'pink');
+        console.log(variable+1);
+        // null 空值
+        var space= null;
+        console.log(space+'pink');// nullpink
+        console.log(space+1); // 1
+    </script> -->
+    <!-- <script>
+        // typeof 获取变量数据类型
+        var num=10;
+        console.log(typeof num);//number
+        var str='伟伟桑';
+        console.log(typeof str);//string
+        var flag=true;
+        console.log(typeof flag);//boolean
+        var vari=undefined;
+        console.log(typeof vari); //undefined
+        var timer=null;
+        console.log(typeof timer);  // object
+        // prompt 取过来的值是字符型的
+       var age= prompt('请输入您的年龄')
+       console.log(age);
+       console.log(typeof age);
+
+       console.log(19);
+       console.log('19');
+       console.log(true);
+       console.log(undefined);
+       console.log(null);
+    </script> -->
+    <!-- <script>
+        //1 把数字型转换为字符串型 变量.toString()
+        var num = 10;
+        var str = num.toString();
+        console.log(str);
+        console.log(typeof str);
+        //2 String(变量)
+        console.log(String(num));
+        // 3.利用拼接字符串的方法实现转换效果 隐式转换
+        console.log(num+'');
+    </script> -->
+    <!-- <script>
+        //转换为数字型
+        // var age =prompt('请输入您的年龄');
+        //1 parseInt(变量) 可以把字符型转换为数字型 整数
+        // console.log(parseInt(age));
+        console.log(parseInt('4.34')); //4 取整
+        console.log(parseInt('4.94'));//4 取整
+        console.log(parseInt('120px')); //120 会去掉px单位
+        // parseFloat (变量)可以把字符型转换为数字型 小数 浮点数
+        console.log(parseFloat('4.34')); //4.34
+        // 3 Number(变量)
+        var str='123';
+        console.log(Number(str));
+        console.log(Number('1234'));
+        //4.利用算数运算 - * / 隐式转换
+        console.log('12'-0);
+        console.log('123'-'120');
+        console.log('123'*1);
+    </script> -->
+    <!-- <script>
+        var year = prompt('请输入您的出生年份');
+        var age = 2022 - year;
+        alert('您今年已经'+age+'岁了');
+    </script> -->
+    <!-- <script>
+        var num1 = prompt('请您输入第一个值:');
+        var num2 = prompt('请您输入第二个值:');
+        var result= parseFloat(num1)+parseFloat(num2);
+        alert('您的结果是:'+result);
+
+    </script> -->
+    <!-- <script>
+        //转换为布尔型 Boolean(变量)
+        console.log(Boolean(''));
+        console.log(Boolean(0));
+        console.log(Boolean(NaN));
+        console.log(Boolean(null));
+        console.log(Boolean(undefined));
+        console.log('--------------'); 
+        console.log(Boolean('123'));
+        console.log(Boolean('你好吗'));
+
+
+    </script> -->
+    <script>
+        var myname = prompt('请输入你的名字:');
+        var sex = prompt('请输入你的性别:');
+        var age = prompt('请输入你的年龄:');
+        alert('你的名字是:' + myname + "\n" + '你的性别是:' + sex +"\n" +'你的年龄是:'+ age);
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

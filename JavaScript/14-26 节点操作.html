@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 节点的优点-->
+    <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是小li</li>
+        <li>我是小li</li>
+        <li>我是小li</li>
+        <li>我是小li</li>
+    </ul>
+    <div class="box">
+        <span class="erweima">x</span>
+    </div>
+    <script>
+        var box = document.querySelector('.box');
+        console.dir(box);
+        // 元素节点 nodeType 为1
+        // 属性节点 nodeType 为2
+        // 文本节点 nodeType 为3;文本节点包括:文字 空格 换行等
+        // 注意:实际开发中,节点操作主要操作的是元素节点
+
+    </script>
+</body>
+
+</html>

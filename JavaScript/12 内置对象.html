@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // JavaScript 对象分为: 自定义对象 内置对象 浏览器对象
+        // 查文档: MDN/W3C
+
+        // Math 对象 不是一个构造函数,不需要new来调用 直接使用里面的属性和方法
+        // console.log(Math.PI); // 一个属性 圆周率
+        // console.log(Math.max(1, 99, 3)); //  99
+        // console.log(Math.max(-1, -19, -10)); // -1
+        // console.log(Math.max(1, 99, 'pink')); // NaN
+        // console.log(Math.max()); // -Infinity
+
+        // 案例:封装自己的数字对象 里面有PI 最大值和最小值
+        // var myMath = {
+        //     PI: 3.1415926,
+        //     max: function () {
+        //         var max = arguments[0];
+        //         for (var i = 1; i < arguments.length; i++) {
+        //             if (arguments[i] > max) {
+        //                 max = arguments[i];
+        //             }
+        //         }
+        //         return max;
+        //     },
+        //     min: function () {
+        //         var min = arguments[0];
+        //         for (var i = 1; i < arguments.length; i++) {
+        //             if (arguments[i] < min) {
+        //                 min = arguments[i];
+        //             }
+        //         }
+        //         return min;
+        //     }
+        // }
+        // console.log(myMath.PI);
+        // console.log(myMath.max(1, 5, 9));
+        // console.log(myMath.min(1, 5, 9));
+
+        // Math 对象: 绝对值和三个取整方法
+        // (1)绝对值
+        // console.log(Math.abs(1)); // 1
+        // console.log(Math.abs(-2)); // 2
+        // console.log(Math.abs('-1')); // 隐式转换 会把字符串型 -1 转换成数字型
+        // console.log(Math.abs('伟伟')); // NaN
+
+        // (2) 三个取整方法
+        // (2-1) Math.floor() 地板 向下取整 往最小了取值
+        // console.log(Math.floor(1.1)); // 1
+        // console.log(Math.floor(1.9)); // 1
+        // // (2-2) Math.ceil()  天花板 向上取整 往最大了取值
+        // console.log(Math.ceil(1.1)); // 2
+        // console.log(Math.ceil(1.9)); // 2
+        // // (2-3) Math.round() 四舍五入 其他数字都是四舍五入 但是 .5 特殊 它往大了取
+        // console.log(Math.round(1.1)); // 1
+        // console.log(Math.round(1.5)); // 2
+        // console.log(Math.round(1.9)); // 2
+        // console.log(Math.round(-1.1)); // -1
+        // console.log(Math.round(-1.5)); // -1
+
+        // Math 对象随机数方法 
+        // 1 random()  返回一个随机的小数 0 =< x < 1
+        // 2 这个方法里面不跟参数
+        // 3 代码验证
+        // console.log(Math.random());
+        // 4 得到两个数之间的随机整数 并且包含这两个整数
+        // Math.floor(Math.random() * (max - min + 1)) + min;
+        // function getRandom(min, max) {
+        //     console.log(min, max,)
+
+        //     return Math.floor(Math.random() * (max - min + 1) + min);
+        // }
+        // console.log(getRandom(1, 10));
+        // 5 随机点名
+        // var arr = ['伟伟', '三三', '二二', '十一', '十九', 'pink']
+        // // console.log(arr[0]);
+        // console.log(arr[getRandom(0, arr.length-1)]);
+
+        // 猜数字游戏
+        // function getRandom(min, max) {
+
+        //     return Math.floor(Math.random() * (max - min + 1)) + min
+        // }
+        // var random = getRandom(1, 10);
+        // while (true) { // 死循环
+        //     var num = prompt('你来猜输入1 - 10之间的数字')
+        //     if (num > random) {
+        //         alert('你猜大了');
+        //     } else if (num > random) {
+        //         alert('你猜小了');
+        //     } else {
+        //         alert('你猜对了');
+        //         break; // 退出整个循环 结束程序
+        //     }
+
+        // }
+
+
+        // Date() 日期对象  是一个构造函数 必须使用new来调用创建日期对象
+        // var arr = new Array(); // 创建一个数组对象
+        // var obj = new Object(); // 创建了一个对象实例
+        // // 1.使用Date  如果没有参数,返回当前系统的当前时间
+        // var date = new Date();
+        // console.log(date);
+        // // 2.参数常用的写法 数字型 2022,09,01 或者是 字符串型 '2022-09-09  14:58:03'
+        // var date1 = new Date(2022, 9, 9);
+        // console.log(date1); // 返回的是10月 不是9月
+        // var date2 = new Date('2022-09-09 14:58:03');
+        // console.log(date2);
+
+
+        // 格式化日期 年 月 日
+        var date = new Date();
+        console.log(date.getFullYear()); // 返回当前日期的年 2022
+        console.log(date.getMonth() + 1); // 月份 返回的月份小1个月  记得月份加1
+        console.log(date.getDate()); // 返回的是几号
+        console.log(date.getDay());  // 返回的周几 周一返回1 周六返回6 周日返回0
+        // 2022年9月9日星期五
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var dates = date.getDate();
+        var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+        var day = date.getDay();
+        console.log('今天是: ' + year + '年' + month + '月' + dates + '日 ' + arr[day]);
+
+        // 格式化日期时分秒
+        var date = new Date();
+        console.log(date.getHours()); // 时
+        console.log(date.getMinutes()); // 分
+        console.log(date.getSeconds()); // 秒
+        // 要求封装一个函数 返回当前的时分秒 格式 08:08:08
+        function getTimer() {
+            var time = new Date();
+            var h = time.getHours();
+            h = h < 10 ? '0' + h : h;
+            var m = time.getMinutes();
+            m = m < 10 ? '0' + m : m;
+            var s = time.getSeconds();
+            s = s < 10 ? '0' + s : s;
+            return h + ':' + m + ':' + s;
+        }
+        console.log(getTimer());
+
+        // Date 总的毫秒数(时间戳) 不是当前时间的毫秒数,而是距离1970年1月1号过了多少毫秒数
+        // 1 通过 valueOf() getTime()
+        var date = new Date();
+        console.log(date.valueOf());
+        console.log(date.getTime());
+        // 2 简单的写法(最常用的写法)
+        var date1 = +new Date(); // +new Date()  返回的就是总的毫秒数
+        console.log(date1);
+        // 3 H5新增的
+        console.log(Date.now());
+
+        // 倒计时案例
+        function countDown(time) {
+            var nowTime = +new Date(); // 返回当前时间的总的毫秒数
+            var inputTime = +new Date(time); // 返回的是用户输入时间总的毫秒数
+            var times = (inputTime - nowTime) / 1000; // times 就是剩余时间总的秒数
+            var d = parseInt(times / 60 / 60 / 24); // 天
+            d = d < 10 ? '0' + d : d;
+            var h = parseInt(times / 60 / 60 % 24); // 时
+            h = h < 10 ? '0' + h : h;
+            var m = parseInt(times / 60 % 60); // 分
+            m = m < 10 ? '0' + m : m;
+            var s = parseInt(times % 60); // 秒
+            s = s < 10 ? '0' + s : s;
+            return d + '天' + h + '时' + m + '分' + s + '秒'
+        }
+        console.log(countDown('2022-9-11 09:00:00'));
+
+        // 数组对象 
+        // 创建数组的两种方式
+        // 1. 利用数组字面量
+        // var arr = [1, 2, 3];
+        // console.log(arr[2]);
+
+        // 2.利用 new Array()
+        // var arr1 = new Array(); // 创建了一个空的数组
+        // var arr1 = new Array(2); // 这个2表示数组的长度为2 里面有两个空的数组元素
+        // var arr1 = new Array(2, 1); // 等价于[2.1] 表示里面有两个数组元素 2和1
+        // console.log(arr1);
+
+        // 翻转数组
+        function reverse(arr) {
+            // if (arr instanceof Array) 
+            if (Array.isArray(arr)) {
+                var newArr = [];
+                for (var i = arr.length - 1; i >= 0; i--) {
+                    newArr[newArr.length] = arr[i];
+                }
+                return newArr;
+            } else {
+                return ' error 这个参数要求必须是数组格式'
+            }
+        }
+        console.log(reverse([1, 2, 3]));
+        console.log(reverse(1, 2, 3));
+
+        // 检测是否为数组
+        // 1. instanceof 运算符 可以用来检测是否为数组
+        // var arr = [];
+        // var obj = {};
+        // console.log(arr instanceof Array);
+        // console.log(obj instanceof Array);
+        // 2. Array.isArray(参数) H5新增的方法 ie9以上版本才支持
+        // console.log(Array.isArray(arr));
+        // console.log(Array.isArray(obj));
+
+        // 添加数组元素
+        // 1 push() 在数组的末尾 添加一个或多个数组元素 
+        var arr = [1, 2, 3];
+        // arr.push(4,'pink');
+        console.log(arr.push(4, 'pink'));
+        console.log(arr);
+        // (1)push 可以给数组增加新的元素
+        // (2)push()参数直接写 数组元素就可以
+        // (3)push 完毕之后返回的结果是 新数组的长度
+        // (4)原数组也会发生变化
+
+        // 2 unshift 在数组的开头 添加一个或多个数组元素
+        console.log(arr.unshift('red', '伟伟'));
+        console.log(arr);
+        // (1) unshift 可以在数组的前面追加新的元素
+        // (2) unshift()参数直接写 数组元素就可以
+        // (3) unshift完毕之后,返回的结果 是 新数组的长度
+        // (4) 原数组也会发生变化
+
+        // 删除数组元素
+        // 1 pop() 可以删除数组的最后一个元素
+        // arr.pop();
+        console.log(arr.pop());
+        console.log(arr);
+        // (1) pop 可以删除数组的最后一个元素,一次只能删除一个
+        // (2) pop()没有参数
+        // (3) pop完毕之后,返回的结果 是 删除的那个元素
+        // (4) 原数组也会发生变化
+
+        // 2 shift() 可以删除数组的第一个元素
+        // arr.shift();
+        console.log(arr.shift());
+        console.log(arr);
+        // (1) shift 可以删除数组的第一个元素,一次只能删除一个
+        // (2) shift()没有参数
+        // (3) shift完毕之后,返回的结果 是 删除的那个元素
+        // (4) 原数组也会发生变化
+
+        // 案例:筛选数组
+        var arr1 = [1500, 1200, 2100, 1800];
+        var newArr1 = [];
+        for (var i = 0; i < arr1.length; i++) {
+            if (arr1[i] < 2000) {
+                // newArr1[newArr1.length] = arr1[i];
+                newArr1.push(arr1[i]);
+            }
+        }
+        console.log(newArr1);
+
+        // 数组排序
+        // 1 翻转数组
+        var arr2 = ['pink', '伟伟', 'red'];
+        arr2.reverse();
+        console.log(arr2);
+        // 2 数组排序(冒泡排序)
+        var arr3 = [13, 4, 77, 7, 1];
+        arr3.sort(function (a, b) {
+            // return a - b; // 升序的顺序排序
+
+            return b - a; // 降序的顺序排序
+
+        });
+        console.log(arr3);
+
+        // 返回数组元素索引号方法 
+        // indexOf(数组元素) 作用就是返回该数组元素的索引号 从前面开始查找
+        // 只返回第一个满足条件的索引号
+        // 如果在数组里面找不到元素 返回-1
+        // var arr4=['pink', '伟伟', 'red','blue','伟伟'];
+        var arr4 = ['pink', 'red', 'blue'];
+        console.log(arr4.indexOf('伟伟'));
+        // lastIndexOf(数组元素) 作用返回该数组元素的索引号 从后面开始查找
+        var arr4 = ['pink', '伟伟', 'red', 'blue', '伟伟'];
+        console.log(arr4.lastIndexOf('伟伟')); // 4
+
+        // 案例:数组去重
+        // 遍历旧数组,拿着旧数组元素去查询新数组,如果该元素在新数组里面查找不到,就添加,否则不添加
+        // 用新数组.indexOf(数组元素) 返回-1,就说明新数组里面没有该元素
+        // 封装一个 去重的函数 unique 独一无二的
+        function unique(arr5) {
+            var newArr2 = [];
+            for (var i = 0; i < arr5.length; i++) {
+                if (newArr2.indexOf(arr5[i]) === -1) {
+                    newArr2.push(arr5[i])
+                }
+            }
+            return newArr2;
+        }
+        var demo = unique(['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b']);
+        console.log(demo);
+        var demo1 = unique(['blue', '伟伟', 'blue', '伟伟']);
+        console.log(demo1);
+
+        // 数组转换为字符串
+        // 1 .toString() 将数组转换为字符串
+        var arr6 = [1, 2, 3];
+        console.log(arr6.toString()); // 1,2,3
+        //  2.join(分隔符)
+        var arr7 = ['green', 'blue', 'pink'];
+        console.log(arr7.join()); // 默认分隔符是逗号, green,blue,pink
+        console.log(arr7.join('-')); // green-blue-pink
+        console.log(arr7.join('&')); // green&blue&pink
+
+        // 字符串对象
+
+        // 基本包装类型:把简单数据类型包装为复杂数据类型;三种:string number boolean
+        var str = 'andy';
+        console.log(str.length);
+        // 对象才有 属性和方法 复杂数据类型才有 属性和方法
+        // 简单数据类型为什么会有length 属性呢?
+        // 过程
+        // (1)把简单数据类型包装为复杂数据类型
+        var temp = new String('andy');
+        // (2)把临时变量的值 给str
+        str = temp;
+        // (3)销毁这个临时变量
+        temp = null;
+
+        // 字符串的不可变性 
+        var str1 = 'andy';
+        console.log(str1);
+        str1 = 'red';
+        console.log(str1);
+        // 因为字符串的不可变 所以不要大量的拼接字符串
+        var str2 = '';
+        for (var i = 1; i <= 100; i++) {
+            str2 += i;
+        }
+        console.log(str2);
+
+        // 字符串所有的方法 都不会修改字符串本身(字符串是不可变的),操作完成会返回一个新的字符串
+        // 根据字符串对象 返回字符所在位置 str.indexOf('要查找的字符',[起始的位置])
+        var str3 = '改革春风吹满地,春天来了';
+        console.log(str3.indexOf('春')); // 2
+        console.log(str3.indexOf('春', 3)); // 8,从索引号是3的位置往后查找
+
+        // 案例:返回字符位置
+        var str4 = 'oabcoefoxyozzopp';
+        var index = str4.indexOf('o');
+        var num3 = 0;
+        // console.log(index);
+        while (index !== -1) {
+            console.log(index);
+            num3++;
+            index = str4.indexOf('o', index + 1);
+        }
+        console.log('o 出现的次数是:' + num3);
+
+        // 根据位置返回字符
+        // 1.charAt(index) 根据位置返回字符
+        var str5 = 'andy'
+        console.log(str.charAt(3)); // y
+        // 遍历所有的字符
+        for (var i = 0; i < str5.length; i++) {
+            console.log(str5.charAt(i));
+        }
+        // 2.charCodeAt(index) 返回相应索引号的字符ASCII值 目的:判断用户按下哪个键
+        console.log(str5.charCodeAt(0));
+        // 3.str[index] H5新增的
+        console.log(str5[0]);
+
+        // 案例: 统计出现次数最多的字符
+        var str6 = 'abcoefoxyozzopp';
+        var o = {};
+        for (var i = 0; i < str6.length; i++) {
+            var chars = str6.charAt(i); // chars 是字符串的每一个字符
+            if (o[chars]) { // o[chars] 得到的是属性值
+                o[chars]++;
+
+            } else {
+                o[chars] = 1;
+            }
+
+        }
+        console.log(o);
+        // 2 遍历对象
+        var max = 0;
+        var ch = '';
+        for (var k in o) {
+            // k 得到的是属性名
+            // o[k] 得到的是属性值
+            if (o[k] > max) {
+                max = o[k];
+                ch = k;
+            }
+        }
+        console.log(max);
+        console.log('最多的字符是:' + ch);
+
+        // 字符串的操作方法
+        // 1 concat('字符串1'+'字符串2'...) 实际用+
+        var str7 = 'Andy';
+        console.log(str7.concat('red'));
+        // 2 substr('截取的起始位置','截取的几个字符');
+        var str8 = '改革春风吹满地';
+        console.log(str8.substr(2, 2)); // 春风 第一个是索引号 第二个是取几个字符
+
+        // 1 替换字符 replace('被替换的字符','替换为的字符')  只替换第一个
+        var str9 = 'andyandy';
+        console.log(str9.replace('a', 'b'));
+
+        var str10 = 'abcoefoxyozzopp';
+        while (str10.indexOf('o') !== -1) {
+            str10 = str10.replace('o', '*');
+
+        }
+        console.log(str10);
+
+        // 2 字符转换为数组 split('分隔符')  前面join 把数组转换为字符串
+        var str11 = 'red,pink,blue';
+        console.log(str11.split(','));
+        var str12 = 'red&pink&blue';
+        console.log(str12.split('&'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
