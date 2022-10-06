@@ -10,9 +10,10 @@
   </head>
   <body>
     <div id="root">
-      <ul>
+      
         <h2>人员列表</h2>
         <input type="text" placeholder="请输入名字" v-model="keyWord" />
+        <ul>
         <li v-for="(p,index) of filPersons" :key="index">
           {{p.name}}-{{p.age}}-{{p.sex}}
         </li>
