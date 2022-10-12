@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const words = [
+      "spray",
+      "limit",
+      "elite",
+      "exuberant",
+      "destruction",
+      "present",
+    ];
+
+    const result = words.filter((word) => word.length > 6);
+
+    console.log(result);
+//  箭头函数
+   /*  const a = [1, 2, 3].map(function (x) {
+      return x * x;
+    }); */
+    // console.log(a);
+    const a = [1,2,3].map(x => x * x);
+    console.log(a);
+  </script>
+</html>

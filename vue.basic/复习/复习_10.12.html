@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>复习1</title>
+
+    <!-- 引入vue -->
+    <script src="./js/vue.js"></script>
+    <style>
+      .demo1 {
+        height: 50px;
+        background-color: skyblue;
+      }
+      .basic {
+        width: 200px;
+        height: 100px;
+        border: 1px solid black;
+      }
+      .normal {
+        background-color: skyblue;
+      }
+      .happy {
+        background-color: orange;
+        font-size: 30px;
+        color: red;
+      }
+      .bad {
+        background-color: black;
+        color: white;
+        font-size: 20px;
+      }
+      .atguigu1 {
+        font-size: 30px;
+      }
+      .atguigu2 {
+        background-color: yellowgreen;
+      }
+      .atguigu3 {
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 定义一个容器 -->
+    <div id="root">
+      <h3>1.插值语法</h3>
+      <h4>你好,{{name}}</h4>
+      <h3>2.指令语法</h3>
+      <a v-bind:href="school.url.toUpperCase()">点击去{{school.name}}学习1</a>
+      <a v-bind:href="school.url">点击去{{school.name}}学习2</a>
+      <h3>3.数据绑定</h3>
+      单向数据绑定 : <input type="text" :value="msg" /> <br /><br />
+      双向数据绑定 : <input type="text" v-model="msg" />
+      <h3>4.事件处理</h3>
+      <h4>欢迎来到{{school.name}}学习</h4>
+      <button v-on:click="showInfo1">点击展示信息1(v-on绑定)</button
+      ><br /><br />
+      <button @click="showInfo1">点击展示信息1(@绑定)</button><br /><br />
+      <button @click="showInfo2(666,$event)">点击展示信息2(传递参数)</button
+      ><br /><br />
+      <a :href="school.url" @click.prevent="showInfo3"
+        >点击展示信息3(阻止默认事件)</a
+      ><br /><br />
+      <div class="demo1" @click="showInfo4">
+        <button @click.stop="showInfo4">点击展示信息4(阻止冒泡)</button>
+      </div>
+      <br /><br />
+      <div class="demo1" @click="showInfo4">
+        <button @click="showInfo4">点击展示信息4(不阻止冒泡)</button>
+      </div>
+      <br /><br />
+      <div class="demo1" @click="showInfo4">
+        <a :href="school.url" @click.prevent.stop="showInfo4"
+          >点击展示信息4(阻止冒泡+阻止默认事件)</a
+        >
+      </div>
+      <br /><br />
+      <div class="demo1" @click="showInfo4">
+        <a :href="school.url" @click.prevent="showInfo4"
+          >点击展示信息4(不阻止冒泡+阻止默认事件)</a
+        >
+      </div>
+      <br /><br />
+      <button @click.once="showInfo1">
+        点击展示信息5(事件只触发一次,再点击不展示)</button
+      ><br /><br />
+
+      <div class="demo1" @click.self="showInfo4">
+        (只有event.target是当前操作的元素时才触发事件)
+        <button @click="showInfo4">
+          点击展示信息6(不点击div不能触发div的点击事件也阻止了冒泡)
+        </button>
+      </div>
+      <br /><br />
+      看控制台(不太明白e.target.value???)<input
+        type="text"
+        placeholder="按下回车提示输入"
+        @keyup.enter="showInfo5"
+      />
+      <h3>5.计算属性</h3>
+      姓: <input type="text" v-model="firstName" /><br /><br />
+      名: <input type="text" v-model="lastName" /><br /><br />
+      全名: <span>{{fullName}}</span>
+      <h3>6.监视属性</h3>
+      姓: <input type="text" v-model="firstName2" /><br /><br />
+      名: <input type="text" v-model="lastName2" /><br /><br />
+      全名: <span>{{fullName2}}</span>
+      <h3>7.绑定样式</h3>
+      <h4>绑定class 字符串 点击盒子修改样式</h4>
+      <div class="basic" :class="mood" @click="changeMood">{{name2}}</div>
+      <h4>绑定class 数组</h4>
+      <div class="basic" :class="classArr">{{name2}}</div>
+      <h4>绑定class 对象 可以在vue修改布尔值</h4>
+      <div class="basic" :class="classObj">{{name2}}</div>
+      <h4>绑定style 对象</h4>
+      <div class="basic" :style="styleObj">{{name2}}</div>
+      <h4>绑定style 数组1</h4>
+      <div class="basic" :style="[styleObj,styleObj1]">{{name2}}</div>
+      <h4>绑定style 数组2</h4>
+      <div class="basic" :style="styleArr">{{name2}}</div>
+      <h3>8.条件渲染</h3>
+      <h4>当前的n值是 : {{n}}</h4>
+      <button @click="n++">点击n+1</button>
+      <h4>v-show做渲染</h4>
+      <h3 v-show="false">欢迎来到{{name3}}</h3>
+      <h3 v-show="1===1">欢迎来到{{name3}}</h3>
+      <h4>v-if做渲染</h4>
+      <h3 v-if="false">欢迎来到{{name3}}</h3>
+      <h3 v-if="1===1">欢迎来到{{name3}}</h3>
+      <h4>v-else与v-else-if</h4>
+      <div v-if="n===0">{{name3}}</div> 
+      <div v-else-if="n===1">南星</div>
+      <div v-else-if="n===2">箫无敌</div>
+      <div v-else>小熊无敌</div>
+      <h4>v-if与template的配合使用</h4>
+      <template v-if="n===1">
+        <h3>南星</h3>
+        <h3>箫无敌</h3>
+        <h3>小熊无敌</h3>
+      </template>
+      <h3>9.列表渲染</h3>
+      <h4>人员列表</h4>
+      <li v-for="(p,id) in persons" :key="id">
+        {{p.name}}-{{p.age}}-{{p.sex}}
+      </li>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </body>
+  <script>
+    const vm = new Vue({
+      el: "#root",
+
+      data: {
+        name: "Jack",
+        name2: "箫无敌&南星",
+        name3:"月远之夜",
+        n:0,
+        school: {
+          name: "尚硅谷",
+          url: "http://www.atguigu.com",
+        },
+        msg: "",
+        firstName: "张",
+        lastName: "三",
+        firstName2: "张",
+        lastName2: "三",
+        fullName2: "张-三",
+        mood: "normal",
+        classArr: ["atguigu1", "atguigu2", "atguigu3"],
+        classObj: {
+          atguigu1: true,
+          atguigu2: false,
+          atguigu3: false,
+        },
+        styleObj: {
+          color: "red",
+          fontSize: "30px",
+        },
+        styleObj1 :{
+            backgroundColor : 'yellowgreen'
+        },
+        styleArr : [
+            {color: "red",
+          fontSize: "30px",},
+          {
+            backgroundColor : 'yellowgreen'
+          }
+
+        ],
+        persons : [
+          {id:'001',name:'南星月',age:22,sex:'女'},
+          {id:'002',name:'沈月',age:25,sex:'女'},
+          {id:'003',name:'箫无敌远',age:23,sex:'男'},
+          {id:'004',name:'陈哲远',age:26,sex:'男'},
+          {id:'005',name:'月远之夜',age:100,sex:'未知'},
+
+
+        ]
+
+        
+      },
+      methods: {
+        showInfo1() {
+          alert("同学你好!");
+        },
+        showInfo2(number, event) {
+          console.log(number, event);
+        },
+        showInfo3() {
+          alert("同学你好!阻止默认事件(跳转页面)");
+        },
+        showInfo4() {
+          alert("同学你好!!!");
+        },
+        showInfo5(e) {
+          // console.log(e.key,e.keyCode);
+          console.log(e.target.value);
+        },
+        changeMood() {
+          const arr = ["normal", "happy", "bad"];
+          const index = Math.floor(Math.random() * 3);
+          this.mood = arr[index];
+        },
+      },
+      computed: {
+        fullName() {
+          return this.firstName + "-" + this.lastName;
+        },
+      },
+      watch: {
+        firstName2(val) {
+          this.fullName2 = val + "-" + this.lastName2;
+        },
+        lastName2(val) {
+          this.fullName2 = this.firstName2 + "-" + val;
+        },
+      },
+    });
+  </script>
+</html>
