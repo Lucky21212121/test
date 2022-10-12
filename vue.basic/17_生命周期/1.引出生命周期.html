@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>引出生命周期</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+      <h2 :style="{opacity}">欢迎学习Vue</h2>
+    </div>
+  </body>
+  <script type="text/javascript">
+    Vue.config.productionTip = false; // 设置为 false 以阻止 vue 在启动时生成生产提示。// 还是有 但在vue.js里面改就可以
+    new Vue({
+      el: "#root",
+      data: {
+        opacity: 1,
+      },
+      change() {
+        setInterval(() => {
+          this.opacity -= 0.01;
+          if (this.opacity <= 0) this.opacity = 1;
+        }, 16);
+      },
+    });
+    // 通过外部的定时器实现(不推荐)
+    /* setInterval(()=>{
+        vm.opacity-= 0.01
+        if(vm.opacity <= 0) vm.opacity =1
+    },16) */
+  </script>
+</html>

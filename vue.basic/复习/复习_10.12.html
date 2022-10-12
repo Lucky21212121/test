@@ -130,7 +130,7 @@
       <h3 v-if="false">欢迎来到{{name3}}</h3>
       <h3 v-if="1===1">欢迎来到{{name3}}</h3>
       <h4>v-else与v-else-if</h4>
-      <div v-if="n===0">{{name3}}</div> 
+      <div v-if="n===0">{{name3}}</div>
       <div v-else-if="n===1">南星</div>
       <div v-else-if="n===2">箫无敌</div>
       <div v-else>小熊无敌</div>
@@ -142,20 +142,22 @@
       </template>
       <h3>9.列表渲染</h3>
       <h4>人员列表</h4>
-      <li v-for="(p,id) in persons" :key="id">
-        {{p.name}}-{{p.age}}-{{p.sex}}
-      </li>
+      <ul>
+        <li v-for="(p,id) in persons" :key="id">
+          {{p.name}}-{{p.age}}-{{p.sex}}
+        </li>
+      </ul>
+      <h4>人员列表过滤</h4>
+      <input type="text" placeholder="请输入名字" v-model="keyWord" />
+      <button @click="sortType= 2">年龄升序</button>
+      <button @click="sortType= 1">年龄降序</button>
+      <button @click="sortType= 0">原顺序</button>
 
-
-
-
-
-
-
-
-
-
-
+      <ul>
+        <li v-for="(p,id) in filPersons" :key="id">
+          {{p.name}}-{{p.age}}-{{p.sex}}
+        </li>
+      </ul>
     </div>
   </body>
   <script>
@@ -165,8 +167,10 @@
       data: {
         name: "Jack",
         name2: "箫无敌&南星",
-        name3:"月远之夜",
-        n:0,
+        name3: "月远之夜",
+        keyWord: "",
+        n: 0,
+        sortType: 0, // 0 原顺序 1年龄降序 2 年龄升序
         school: {
           name: "尚硅谷",
           url: "http://www.atguigu.com",
@@ -188,28 +192,22 @@
           color: "red",
           fontSize: "30px",
         },
-        styleObj1 :{
-            backgroundColor : 'yellowgreen'
+        styleObj1: {
+          backgroundColor: "yellowgreen",
         },
-        styleArr : [
-            {color: "red",
-          fontSize: "30px",},
+        styleArr: [
+          { color: "red", fontSize: "30px" },
           {
-            backgroundColor : 'yellowgreen'
-          }
-
+            backgroundColor: "yellowgreen",
+          },
         ],
-        persons : [
-          {id:'001',name:'南星月',age:22,sex:'女'},
-          {id:'002',name:'沈月',age:25,sex:'女'},
-          {id:'003',name:'箫无敌远',age:23,sex:'男'},
-          {id:'004',name:'陈哲远',age:26,sex:'男'},
-          {id:'005',name:'月远之夜',age:100,sex:'未知'},
-
-
-        ]
-
-        
+        persons: [
+          { id: "001", name: "南星月", age: 22, sex: "女" },
+          { id: "002", name: "沈月", age: 25, sex: "女" },
+          { id: "003", name: "箫无敌远", age: 23, sex: "男" },
+          { id: "004", name: "陈哲远", age: 26, sex: "男" },
+          { id: "005", name: "月远之夜", age: 100, sex: "未知" },
+        ],
       },
       methods: {
         showInfo1() {
@@ -237,6 +235,19 @@
       computed: {
         fullName() {
           return this.firstName + "-" + this.lastName;
+        },
+        filPersons() {
+          const arr1 = this.persons.filter((p) => {
+            return p.name.indexOf(this.keyWord) !== -1;
+          });
+
+          // 判断是否排序
+          if (this.sortType) {
+            arr1.sort((p1, p2) => {
+              return this.sortType === 1 ? p2.age - p1.age : p1.age - p2.age;
+            });
+          }
+          return arr1;
         },
       },
       watch: {
