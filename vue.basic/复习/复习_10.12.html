@@ -8,6 +8,8 @@
 
     <!-- 引入vue -->
     <script src="./js/vue.js"></script>
+    <script type="text/javascript" src="../js/dayjs.min.js"></script>
+
     <style>
       .demo1 {
         height: 50px;
@@ -74,6 +76,12 @@
       <div class="demo1" @click="showInfo4">
         <a :href="school.url" @click.prevent.stop="showInfo4"
           >点击展示信息4(阻止冒泡+阻止默认事件)</a
+        >
+      </div>
+      <br /><br />
+      <div class="demo1" @click="showInfo4">
+        <a :href="school.url" @click.stop="showInfo4"
+          >点击展示信息4(阻止冒泡+不阻止默认事件)</a
         >
       </div>
       <br /><br />
@@ -152,12 +160,68 @@
       <button @click="sortType= 2">年龄升序</button>
       <button @click="sortType= 1">年龄降序</button>
       <button @click="sortType= 0">原顺序</button>
-
       <ul>
         <li v-for="(p,id) in filPersons" :key="id">
           {{p.name}}-{{p.age}}-{{p.sex}}
         </li>
       </ul>
+      <h3>10.Vue监视数据</h3>
+      <h4>学生信息</h4>
+      <button @click="students.age++">点击年龄加1岁</button>
+      <button @click="addSex">添加一个性别属性:默认值为男</button>
+      <button @click="students.sex='未知'">修改性别</button>
+      <button @click="addFirstFriend">在列表首位添加一个朋友</button>
+      <button @click="updateFirstName">修改第一个朋友的名字为:陈哲远</button>
+      <button @click="addHobby">添加一个爱好</button>
+      <button @click="updateFirstHobby">修改第一个爱好为:超级喜欢南星</button>
+      <button @click="removeShuashuai">过滤掉爱好中的耍帅</button>
+      <h4>姓名 : {{students.name}}</h4>
+      <h4>年龄 : {{students.age}}</h4>
+      <h4 v-show="students.sex">性别 : {{students.sex}}</h4>
+
+      <h4>爱好 :</h4>
+      <ul>
+        <li v-for="(h,index) in students.hobby" :key="index">{{h}}</li>
+      </ul>
+      <h4>朋友们 :</h4>
+      <ul>
+        <li v-for="(f,index) in students.friends" :key="index">
+          {{f.name}}-{{f.age}}
+        </li>
+      </ul>
+
+      <h3>11.收集表单数据</h3>
+      <form @submit.prevent="demo" >
+        账号: <input type="text" v-model.trim="userInfo.account"> <br/><br/>
+        密码: <input type="password" v-model="userInfo.password"><br/><br/>
+        年龄: <input type="number" v-model.number="userInfo.age"><br/><br/>
+        性别: 男 <input type="radio" name="sex" v-model="userInfo.sex" value="male">
+             女 <input type="radio" name="sex"v-model="userInfo.sex" value="female"><br/><br/>
+        爱好: 喜欢南星 <input type="checkbox" v-model="userInfo.hobby" value="like"> 
+              耍帅 <input type="checkbox" v-model="userInfo.hobby" value="handsom">
+             陪伴南星<input type="checkbox" v-model="userInfo.hobby" value="peiban"><br/><br/>
+        所属地区: <select v-model="userInfo.address">
+         <option value="" >请选择地区</option>
+         <option value="beijing" >北京</option>
+         <option value="shanghai">上海</option>
+         <option value="xiangsan">象山</option>
+         <option value="xiamen" >厦门</option>
+
+        </select> <br/><br/>
+        其他信息: <textarea v-model.lazy="userInfo.others"></textarea><br/><br/>
+        <input type="checkbox" v-model="userInfo.agree">阅读并接受 <a href="http://www.arguigu.com">《用户协议》</a> <button>提交</button>
+      </form>
+
+      <h3>12.过滤器</h3>
+      <h4>显示格式化后的时间</h4>
+      <h5>现在是：{{fmtTime}}</h5>
+      <h5>现在是：{{getFmtTime()}}</h5>
+
+
+
+
+
+
     </div>
   </body>
   <script>
@@ -174,6 +238,26 @@
         school: {
           name: "尚硅谷",
           url: "http://www.atguigu.com",
+        },
+        time:'1665632700809',
+        students: {
+          name: "箫无敌",
+          age: "18",
+          hobby: ["喜欢南星", "爱吃醋", "一直陪伴南星", "耍帅"],
+          friends: [
+            { name: "陆子辰", age: "25" },
+            { name: "叶晴", age: "24" },
+          ],
+        },
+        userInfo:{
+          acount:'',
+          password:'',
+          age:'18',
+          sex:'female',
+          hobby:[],
+          address:'beijing',
+          others:'',
+          agree:''
         },
         msg: "",
         firstName: "张",
@@ -231,6 +315,37 @@
           const index = Math.floor(Math.random() * 3);
           this.mood = arr[index];
         },
+        addSex() {
+          // Vue.set(this.students,'sex','男')
+          this.$set(this.students, "sex", "男");
+        },
+        addFirstFriend() {
+          this.students.friends.unshift({ name: "南小星", age: "18" });
+        },
+        updateFirstName() {
+          this.students.friends[0].name = "陈哲远";
+        },
+        addHobby() {
+          this.students.hobby.push("对南星好");
+        },
+        updateFirstHobby() {
+          // this.students.hobby.splice(0,1,'超级喜欢南星')
+          // Vue.set(this.students.hobby,0,'超级喜欢南星')
+          vm.$set(this.students.hobby, 0, "超级喜欢南星");
+        },
+        removeShuashuai() {
+          this.students.hobby=this.students.hobby.filter((h)=>{
+            return h !== '耍帅'
+          })
+        },
+        demo(){
+            console.log(JSON.stringify(this.userInfo));
+            
+        },
+        getFmtTime(){
+          return dayjs(this.time).format("YYYY年MM月DD日 HH:mm:ss");
+          
+        }
       },
       computed: {
         fullName() {
@@ -249,6 +364,9 @@
           }
           return arr1;
         },
+        fmtTime(){
+          return dayjs(this.time).format("YYYY年MM月DD日 HH:mm:ss");
+        }
       },
       watch: {
         firstName2(val) {

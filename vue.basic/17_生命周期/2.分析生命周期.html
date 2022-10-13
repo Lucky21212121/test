@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>分析生命周期</title>
+    <!-- 引入Vue -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+  </head>
+  <body>
+    <!-- 准备好一个容器 -->
+    <div id="root">
+        <h2>当前的n值是: {{n}}</h2>
+        <button @click="add">点击n+1</button>
+      
+    </div>
+  </body>
+  <script type="text/javascript">
+    Vue.config.productionTip = false; // 设置为 false 以阻止 vue 在启动时生成生产提示。// 还是有 但在vue.js里面改就可以
+    new Vue({
+      el: "#root",
+    //   template:`
+    //   <div>
+    //     <h2>当前的n值是: {{n}}</h2>
+    //     <button @click="add">点击n+1</button>
+    //     </div>
+    //   `,
+      
+      data: {
+        n: 1,
+      },
+      methods: {
+        add() {
+          this.n++;
+        },
+      },
+      beforeCreate() {
+        console.log("beforeCreate");
+        // console.log(this);
+      },
+      created() {
+        console.log("created");
+        // console.log(this);
+      },
+      beforeMount() {
+        console.log("beforeMount");
+        // console.log(this);
+      },
+      mounted() {
+        console.log("mounted");
+        console.log(this);
+        
+      },
+    });
+  </script>
+</html>
