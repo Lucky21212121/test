@@ -42,6 +42,9 @@
       .atguigu3 {
         border: 2px solid red;
       }
+      [v-cloak] {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -191,37 +194,79 @@
       </ul>
 
       <h3>11.收集表单数据</h3>
-      <form @submit.prevent="demo" >
-        账号: <input type="text" v-model.trim="userInfo.account"> <br/><br/>
-        密码: <input type="password" v-model="userInfo.password"><br/><br/>
-        年龄: <input type="number" v-model.number="userInfo.age"><br/><br/>
-        性别: 男 <input type="radio" name="sex" v-model="userInfo.sex" value="male">
-             女 <input type="radio" name="sex"v-model="userInfo.sex" value="female"><br/><br/>
-        爱好: 喜欢南星 <input type="checkbox" v-model="userInfo.hobby" value="like"> 
-              耍帅 <input type="checkbox" v-model="userInfo.hobby" value="handsom">
-             陪伴南星<input type="checkbox" v-model="userInfo.hobby" value="peiban"><br/><br/>
-        所属地区: <select v-model="userInfo.address">
-         <option value="" >请选择地区</option>
-         <option value="beijing" >北京</option>
-         <option value="shanghai">上海</option>
-         <option value="xiangsan">象山</option>
-         <option value="xiamen" >厦门</option>
-
-        </select> <br/><br/>
-        其他信息: <textarea v-model.lazy="userInfo.others"></textarea><br/><br/>
-        <input type="checkbox" v-model="userInfo.agree">阅读并接受 <a href="http://www.arguigu.com">《用户协议》</a> <button>提交</button>
+      <form @submit.prevent="demo">
+        账号: <input type="text" v-model.trim="userInfo.account" /> <br /><br />
+        密码: <input type="password" v-model="userInfo.password" /><br /><br />
+        年龄: <input type="number" v-model.number="userInfo.age" /><br /><br />
+        性别: 男
+        <input type="radio" name="sex" v-model="userInfo.sex" value="male" /> 女
+        <input
+          type="radio"
+          name="sex"
+          v-model="userInfo.sex"
+          value="female"
+        /><br /><br />
+        爱好: 喜欢南星
+        <input type="checkbox" v-model="userInfo.hobby" value="like" /> 耍帅
+        <input type="checkbox" v-model="userInfo.hobby" value="handsom" />
+        陪伴南星<input
+          type="checkbox"
+          v-model="userInfo.hobby"
+          value="peiban"
+        /><br /><br />
+        所属地区:
+        <select v-model="userInfo.address">
+          <option value="">请选择地区</option>
+          <option value="beijing">北京</option>
+          <option value="shanghai">上海</option>
+          <option value="xiangsan">象山</option>
+          <option value="xiamen">厦门</option>
+        </select>
+        <br /><br />
+        其他信息: <textarea v-model.lazy="userInfo.others"></textarea
+        ><br /><br />
+        <input type="checkbox" v-model="userInfo.agree" />阅读并接受
+        <a href="http://www.arguigu.com">《用户协议》</a> <button>提交</button>
       </form>
 
       <h3>12.过滤器</h3>
       <h4>显示格式化后的时间</h4>
-      <h5>现在是：{{fmtTime}}</h5>
-      <h5>现在是：{{getFmtTime()}}</h5>
+      <h5>现在是(计算属性) :{{fmtTime}}</h5>
+      <h5>现在是(methods) :{{getFmtTime()}}</h5>
+      <h5>现在是(过滤器) :{{time | timeFormater}}</h5>
+      <h5>现在是(过滤器传参) :{{time | timeFormater('YYYY_MM_DD')}}</h5>
 
+      <h3>13.内置指令总结</h3>
+      <ul>
+        <li v-for="(n,id) of neizhizhiling" :key="id">
+          {{n.name}}:{{n.content}}
+        </li>
+      </ul>
+      <h4>v-text</h4>
+      <div>你好啊,{{school.name}}</div>
+      <div v-text="school.name">你好啊,{{school.name}}</div>
+      <div v-text="str">你好啊,{{school.name}}</div>
+      <h4>v-html</h4>
+      <div>你好啊,{{school.name}}</div>
+      <div v-html="school.name">你好啊,{{school.name}}</div>
+      <div v-html="str">你好啊,{{school.name}}</div>
+      <h4>v-cloak</h4>
+      <h5 v-cloak>{{school.name}}</h5>
+      <h4>v-once</h4>
+      <h5 v-once>初始化n2值是:{{n2}}</h5>
+      <h5>当前的n2值是:{{n2}}</h5>
+      <button @click="n2++">点击n2+1</button>
+      <h4>v-pre</h4>
+      <h5>Vue其实很简单</h5>
+      <h4>当前的n3值是:{{n3}}</h4>
+      <button @click="n3++">点我n3+1</button>
 
-
-
-
-
+      <h3>14.自定义指令</h3>
+      <h4>当前n4的值是: <span v-text="n4"></span></h4>
+      <h4>放大十倍的n4值是: <span v-big="n4"></span></h4>
+      <button @click="n4++">点击n4+1</button>
+      <hr />
+      <input type="text"  v-fbind:value="n4" />
     </div>
   </body>
   <script>
@@ -234,12 +279,17 @@
         name3: "月远之夜",
         keyWord: "",
         n: 0,
+        n2: 1,
+        n3: 1,
+        n4: 1,
+
         sortType: 0, // 0 原顺序 1年龄降序 2 年龄升序
         school: {
           name: "尚硅谷",
           url: "http://www.atguigu.com",
         },
-        time:'1665632700809',
+        str: "<h3>尚硅谷</h3>",
+        time: 1665710039050,
         students: {
           name: "箫无敌",
           age: "18",
@@ -249,15 +299,70 @@
             { name: "叶晴", age: "24" },
           ],
         },
-        userInfo:{
-          acount:'',
-          password:'',
-          age:'18',
-          sex:'female',
-          hobby:[],
-          address:'beijing',
-          others:'',
-          agree:''
+        neizhizhiling: [
+          {
+            id: "001",
+            name: "v-bind",
+            content: "单向绑定解析表达式,可简写为 :xxx",
+          },
+          { id: "002", name: "v-model", content: " 双向数据绑定" },
+          { id: "003", name: "v-for", content: " 遍历数组/对象/字符串" },
+          { id: "004", name: "v-on", content: "绑定事件监听,可简写为@" },
+          {
+            id: "005",
+            name: "v-if",
+            content: "条件渲染(动态控制节点是否存在)",
+          },
+          {
+            id: "006",
+            name: "v-else",
+            content: "条件渲染(动态控制节点是否存在)",
+          },
+          {
+            id: "007",
+            name: "v-show",
+            content: "条件渲染(动态控制节点是否展示)",
+          },
+          {
+            id: "008",
+            name: "v-text",
+            content:
+              "向其所在的节点中渲染文本内容;与插值语法的区别:v-text会替换掉节点中的内容,{{xxx}}则不会",
+          },
+          {
+            id: "009",
+            name: "v-html",
+            content:
+              "向指定节点中渲染包含html结构的内容;v-html会替换掉节点中所有的内容,{{xxx}}则不会;v-html可以识别html结构",
+          },
+          {
+            id: "010",
+            name: "v-cloak",
+            content:
+              "本质是一个特殊属性,Vue实例创建完毕并接管容器后,会删掉v-cloak属性;使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题",
+          },
+          {
+            id: "011",
+            name: "v-once",
+            content:
+              "v-once所在节点在初次动态渲染后,就视为静态内容了;以后数据的改变不会引起v-once所在结构的更新,可以用于优化性能",
+          },
+          {
+            id: "012",
+            name: "v-pre",
+            content:
+              "跳过其所在节点的编译过程;可利用它跳过：没有使用指令语法，没有使用插值语法的节点，会加快编译",
+          },
+        ],
+        userInfo: {
+          acount: "",
+          password: "",
+          age: "18",
+          sex: "female",
+          hobby: [],
+          address: "beijing",
+          others: "",
+          agree: "",
         },
         msg: "",
         firstName: "张",
@@ -334,18 +439,16 @@
           vm.$set(this.students.hobby, 0, "超级喜欢南星");
         },
         removeShuashuai() {
-          this.students.hobby=this.students.hobby.filter((h)=>{
-            return h !== '耍帅'
-          })
+          this.students.hobby = this.students.hobby.filter((h) => {
+            return h !== "耍帅";
+          });
         },
-        demo(){
-            console.log(JSON.stringify(this.userInfo));
-            
+        demo() {
+          console.log(JSON.stringify(this.userInfo));
         },
-        getFmtTime(){
+        getFmtTime() {
           return dayjs(this.time).format("YYYY年MM月DD日 HH:mm:ss");
-          
-        }
+        },
       },
       computed: {
         fullName() {
@@ -364,9 +467,9 @@
           }
           return arr1;
         },
-        fmtTime(){
+        fmtTime() {
           return dayjs(this.time).format("YYYY年MM月DD日 HH:mm:ss");
-        }
+        },
       },
       watch: {
         firstName2(val) {
@@ -374,6 +477,30 @@
         },
         lastName2(val) {
           this.fullName2 = this.firstName2 + "-" + val;
+        },
+      },
+      filters: {
+        timeFormater(value, str = "YYYY年MM月DD日 HH:mm:ss") {
+          return dayjs(value).format(str);
+        },
+      },
+      directives: {
+        big(element, binding) {
+          console.log(element, binding);
+          element.innerText = binding.value * 10;
+        },
+        fbind: {
+          bind(element, binding) {
+            console.log(element,binding);
+            element.value=binding.value
+          },
+          inserted(element, binding) {
+            element.focus()
+          },
+          update(element, binding) {
+            element.value=binding.value
+
+          },
         },
       },
     });
