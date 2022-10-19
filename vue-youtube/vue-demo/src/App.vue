@@ -58,7 +58,7 @@ import MyFoMyHeaderoter from './components/MyFooter.vue';
         })
 
       },
-      // 清楚所有已经完成的todo
+      // 清除所有已经完成的todo
       clearAllTodo(){
         this.todos = this.todos.filter((todo)=>{
           return !todo.done
