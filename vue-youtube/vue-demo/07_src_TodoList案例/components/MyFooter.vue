@@ -1,5 +1,6 @@
 <template>
-  <div class="todo-footer" v-show="total">
+  <!-- v-show="total" 0的布尔值为false,其他数字的布尔值是true 当total为0时,隐藏整个footer -->
+  <div class="todo-footer" v-show="total">  
         <label>
           <!-- <input type="checkbox" :checked="isAll" @change="checkAll"/> -->
           <input type="checkbox" v-model="isAll"/>

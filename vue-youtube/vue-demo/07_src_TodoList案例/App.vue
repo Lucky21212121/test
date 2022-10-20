@@ -14,7 +14,7 @@
 <script>
 import MyHeader from './components/MyHeader.vue';
 import MyList from './components/MyList.vue';
-import MyFoMyHeaderoter from './components/MyFooter.vue';
+import MyFooter from './components/MyFooter.vue';
 
  export default {
     name:'App',
@@ -35,7 +35,7 @@ import MyFoMyHeaderoter from './components/MyFooter.vue';
         // console.log('我是App组件,我收到了数据',x);
         this.todos.unshift(todoObj)
       },
-      // 勾选or取消勾选一个todo
+      // 勾选or取消勾选一个todo 根据item组件传过来的实参id跟todos里面的每个对象的id对比 如果相等就改变done值不相等不改变
       checkTodo(id){
         
         this.todos.forEach((todo)=>{
@@ -46,21 +46,22 @@ import MyFoMyHeaderoter from './components/MyFooter.vue';
 
         
       },
-      // 删除一个todo
+      // 删除一个todo 从item组件传过来的id与todos里面对象的id一个个对比 相等就删除,不相等就留下
       deleteTodo(id){
         this.todos = this.todos.filter(todo=>todo.id !== id)
 
       },
-      // 全选or取消全选
+      // 全选or取消全选 传过来的实参是true或false,这里是遍历数组,让每一个数组里面的对象的done都跟实参一样
       checkAllTodo(done){
         this.todos.forEach((todo)=>{
           todo.done = done
         })
 
       },
-      // 清除所有已经完成的todo
+      // 清除所有已经完成的todo  filter函数,过滤出todos里面的对象为false的
       clearAllTodo(){
         this.todos = this.todos.filter((todo)=>{
+          
           return !todo.done
 
         })
