@@ -3,7 +3,7 @@
 
         <h2>学校名称: {{name}}</h2>
         <h2>学校地址: {{address}}</h2>
-        <button @click="sendSchoolName">点击发送学校名字给App</button>
+       
         
     </div>
 </template>
@@ -12,7 +12,7 @@
 
   export default {
     name:'School',
-    props:['getSchoolName'],
+   
     data(){
         return {
             name:'尚硅谷',
@@ -21,11 +21,18 @@
        
         }
     },
-    methods: {
-        sendSchoolName(){
-            this.getSchoolName(this.name)
-        }
+    mounted(){
+        // console.log('school组件',window.x);
+        // console.log('School组件',this);
+        this.$bus.$on('hello',(data)=>{
+            console.log('我是school组件,收到了数据',data);
+        })
+
+    },
+    beforeDestroy(){
+        this.$bus.$off('hello')
     }
+   
  
     
     }
