@@ -227,3 +227,73 @@ npm run build
 4.最好在beforeDestroy钩子中,用$off去解绑当前组件所用到的事件     
 
 ```
+
+## 消息订阅与发布(pubsub)
+```sh
+1.一种组件间通信的方式,适用于任意组件间通信
+
+2.使用步骤
+ 
+   (1).安装pubsub : npm i pubsub-js
+
+   (2).引入: import pubsub from 'pubsub-js'
+
+   (3).接收数据:A组件想接收数据,则在A组件中订阅消息,订阅的回调留在A组件自身
+        methods: {
+          demo(msgName,data){......}
+        }
+        .....
+        mounted(){
+          this.pubId = pubsub.subscribe('xxx',this.demo) // 订阅消息
+        }
+    (4).提供数据: pubsub.publish('xxx',数据)
+
+    (5).最好在beforeDestroy钩子中,用 pubsub.unsubscribe(this.pubId)去取消订阅     
+```
+## nextTick
+```sh
+
+1.语法: this.$nextTick(回调函数)
+
+2.作用:在下一次DOM更新结束后执行其指定的回调
+
+3.什么时候用:当改变数据后,要基于更新后的新DOM进行某些操作时,要在nextTick所指定的回调函数中执行
+
+```
+## Vue封装的过度与动画
+```sh
+1.作用:在插入,更新或移除DOM元素时,在合适的时候给元素添加样式类名
+
+2.图示:
+   Vue封装的过度与动画_图示.jpg
+
+3.写法:
+ 
+  (1).准备好样式:
+
+     A 元素进入的样式:
+
+       a v-enter:进入的起点
+
+       b v-enter-active :进入过程中
+
+       c v-enter-to :进入的终点
+
+    B 元素离开的样式:
+
+      a v-leave: 离开的起点
+
+      b v-leave-active: 离开过程中
+
+      c v-leave-to: 离开的终点 
+  (2).使用<transition>包裹要过度的元素,并配置name属性:
+
+     <transition name="hello">
+         <h1 v-show="isShow">你好啊!</h1>
+     </transition>
+
+  (3).备注:若有多个元素需要过度,则需要使用:<transition-group>,且每个元素都要知道key值  
+
+      
+    
+```

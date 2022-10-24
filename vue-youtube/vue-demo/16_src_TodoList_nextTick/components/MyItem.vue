@@ -1,5 +1,4 @@
 <template>
-  
     <li>
           <label>
             <input type="checkbox" :checked="todo.done" @change="handleChecked(todo.id)"/>
@@ -16,7 +15,6 @@
           <button v-show="!todo.isEdit" class="btn btn-edit" @click="handleEdit(todo)">编辑</button>
         </li>
 
-   
 </template>
 
 <script>
@@ -117,5 +115,4 @@ li:hover {
 li:hover button {
   display:block;
 }
-
 </style>
