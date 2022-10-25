@@ -71,22 +71,43 @@ npm run build
      功能: 可以把多个组件共用的配置提取成一个混入对象
      使用方式:
         第一步定义混合,例如:
-              {
+           在mixin.js文件内
+              export const mixin = {
                 data(){....},
                 methods(){....},
                 ....
               }
+              export const mixin2 = {
+                data(){....},
+                methods(){....},
+                ....
+              }
+
         第二步使用混入,例如:
-             (1).全局混入:Vue.mixin(xxx)
-             (2).局部混入:mixins:['xxx']    
+             (1).全局混入:
+               首先: 
+                    import {mixin,mixin2} from './mixin.js'
+               然后: 分别混入
+                    Vue.mixin(mixin) 
+                    Vue.mixin(mixin2) 
+
+             
+             (2).局部混入:
+                首先: 
+                      import {mixin,mixin2} from './mixin.js'
+                然后: 
+                      mixins:[mixin,mixin2]         
+            
  ```            
 
 ## 插件
 ```sh
   功能:用于增强Vue
   本质:包含install方法的一个对象,install的第一个参数是Vue ,第二个以后的参数是插件使用者传递的数据
-  定义插件:
-     对象.install = function(Vue,options) {
+    第一步:定义插件:
+    在plugins.js文件中
+     export default {
+      install = function(Vue,options) {
        // 1.添加全局过滤器
         Vue.filter(...)
 
@@ -101,7 +122,29 @@ npm run build
       Vue.prototype.$myProperty = xxx 
 
      }
-  使用插件 : Vue.use()   
+     }
+
+    #  对象.install = function(Vue,options) {
+    #    // 1.添加全局过滤器
+    #     Vue.filter(...)
+
+    #   // 2.添加全局指令
+    #     Vue.directive(...)
+
+    #   // 3.配置全局混入(合)
+    #     Vue.mixin(...)
+
+    #   // 4.添加实例方法
+    #   Vue.prototype.$myMethod = function(){...} 
+    #   Vue.prototype.$myProperty = xxx 
+
+    #  }
+     
+  第二步:使用插件 :
+    首先:
+       import plugins from './plugins.js'
+    然后:
+       Vue.use(plugins)   
 ```
 
 
