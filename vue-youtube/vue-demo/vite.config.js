@@ -15,12 +15,22 @@ export default defineConfig({
       additionalLegacyPolyfills: ['regenerator-runtime/runtime']
     })
   ],
-  devServer:{
-open:true,
-port:9000,
-compress:true
-
+  server: {
+    host: true,
+    port: 3000,  //端口
+    strictPort: false,  //是否制定端口
+    open: true,  // 可以是字符串
+    proxy: {
+      target: '',
+      // changeOrigin: true,  // 用于控制请求头中的host值
+      rewrite: path => path.replace(/^\/api/, '')
+    }
   },
+
+
+
+
+//   },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
