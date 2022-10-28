@@ -723,6 +723,29 @@ npm run build
       <router-link to="/home/news">News</router-link>
 
 
+### 4.路由的query参数
+
+ 1.传递参数
+     <!-- 跳转路由并携带query参数,to的字符串写法 -->
+          <router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">跳转</router-link>
+
+           <!-- 跳转路由并携带query参数,to的对象写法 -->
+          <router-link :to="{
+            path:'/home/message/detail',
+            query:{
+              id:m.id,
+              title:m.title,
+            }
+          }">
+            跳转
+          </router-link>
+
+ 2.接收参数:
+   &route.query.id
+   &route.query.title      
+
+
+
 
    
 ```   
