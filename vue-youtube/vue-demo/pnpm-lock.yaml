@@ -13,6 +13,7 @@ specifiers:
   vite: ^3.0.2
   vue: ^2.7.7
   vue-resource: ^1.5.3
+  vue-router: '3'
   vuex: ^3.6.2
 
 dependencies:
@@ -23,6 +24,7 @@ dependencies:
   pubsub-js: 1.9.4
   vue: 2.7.10
   vue-resource: 1.5.3
+  vue-router: 3.6.5_vue@2.7.10
   vuex: 3.6.2_vue@2.7.10
 
 devDependencies:
@@ -1369,6 +1371,14 @@ packages:
     resolution: {integrity: sha512-REhTuEuYSpwmEH/VN4fgDQVC/VXxDK/xsguuiDPnINxOwy1s0CSu//p++osTUkiAXi6d/vptwBpb0AcBIDsXzw==}
     dependencies:
       got: 11.8.5
+    dev: false
+
+  /vue-router/3.6.5_vue@2.7.10:
+    resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+    peerDependencies:
+      vue: ^2
+    dependencies:
+      vue: 2.7.10
     dev: false
 
   /vue/2.7.10:
