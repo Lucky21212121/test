@@ -742,7 +742,59 @@ npm run build
 
  2.接收参数:
    &route.query.id
-   &route.query.title      
+   &route.query.title   
+
+### 5.命名路由
+
+1.作用:可以简化路由的跳转
+
+2.如何使用
+  (1) 给路由命名:
+       routes:[
+        {
+            name:'guanyu',
+            path :'/about',
+            component:About,
+        },
+        {
+            path :'/home',
+            component:Home,
+            children:[
+                {
+                    path:'news',
+                    component:News,
+                },
+                {
+                    path:'message',
+                    component:Message,
+                    children:[
+                        {
+                            name:'xiangqing', // 给路由命名
+                            path:'detail',
+                            component:Detail,
+                        }
+                    ]
+                }
+            ]
+        },
+       ]
+    (2).简化跳转
+      <!--简化前,需要写完整的路径-->
+      <router-link to"/about"=>About</router-link >
+
+      <!--简化后,直接通过名字跳转-->
+      <router-link :to="{name:'guanyu'}">About</router-link >
+
+      <!--简化写法配合传递参数-->
+       <router-link :to="{
+           name:'xiangqing',
+            query:{
+              id:m.id,
+              title:m.title,
+            }
+          }">跳转
+          </router-link>
+
 
 
 
