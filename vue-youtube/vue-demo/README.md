@@ -839,7 +839,42 @@ npm run build
 
 3.接受参数:
     $route.params.id
-    $route.params.title             
+    $route.params.title    
+
+### 7.路由的props参数
+
+作用:让路由组件更方便的收到参数
+ 
+     {
+          name:'xiangqing',
+          path:'detail',
+          component:Detail, 
+
+          // props的第一种写法:值为对象;该对象中的所有key-value都会以props的形式传给Detail组件                          
+          // props:{a:1,b:'hello'},
+
+          // props的第二种写法:值为布尔值;若布尔值为真,就会把该路由组件收到的所有params参数,以props的形式传给Detail组件
+          // props:true,
+
+          // props第三种写法:值为函数
+
+          /* props(){
+              return {id:'666',title:'你好啊'}
+          }, */
+
+          props($route){
+                return {id:$route.query.id,
+                title:$route.query.title}
+                },
+
+          /* props({query}){
+          return {id:query.id,title:query.title}
+          }, */
+          
+          /* props({query:{id,title}}){
+          return {id:id,title:title}
+          },*/
+     }
 
 
 
