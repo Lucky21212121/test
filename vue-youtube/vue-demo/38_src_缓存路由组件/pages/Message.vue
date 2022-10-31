@@ -41,7 +41,7 @@ export default {
         };
     },
     beforeDestroy(){
-      // console.log('Message组件即将被销毁了');
+      console.log('Message组件即将被销毁了');
      },
     methods: {
       pushShow(m){
