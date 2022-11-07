@@ -1,16 +1,23 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-// 完整引入
-// 引入ElementUI组件库
-import ElementUI from 'element-ui';
-// 引入ElementUI全部样式
-import 'element-ui/lib/theme-chalk/index.css';
 
 // 关闭Vue的生产提示
 Vue.config.productionTip=false
-// 应用ElementUI
-Vue.use(ElementUI);
+Vue.filter("round", function(value, decimals) {
+    if (!value) {
+      value = 0;
+    }
+  
+    if (!decimals) {
+      decimals = 0;
+    }
+  
+    value = Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+    return value;
+    
+  });
+
 
 
 
