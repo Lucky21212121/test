@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0147)http://127.0.0.1:5500/05_vue3%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/vue3%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 源数据
+        let person= {
+            name:'张三',
+            age : 18
+        }
+        // 模拟vue2中实现响应式
+        /* let p ={}
+        Object.defineProperty(p,'name',{
+            get(){ // 读取name时调用
+                return person.name
+
+            },
+            set(value){ // 修改name是调用
+                console.log('有人修改了name属性,我发现了,要去更新界面');
+                person.name = value
+
+            }
+            
+        })
+        Object.defineProperty(p,'age',{
+            get(){ // 读取name时调用
+                return person.age
+
+            },
+            set(value){ // 修改name是调用
+                console.log('有人修改了age属性,我发现了,要去更新界面');
+                person.age = value
+
+            }
+            
+        })
+         */
+         
+        // 模拟vue3中实现响应式
+        /* const p = new Proxy(person,{
+            // 读取p的某个属性时调用
+            get(target,propName){
+                console.log(`有人读取了p身上的${propName}属性`);
+                return target[propName]
+            },
+            // 修改或追加p的某个属性时调用
+            set(target,propName,value){
+                console.log(`有人修改了p身上的${propName}属性,我要去更新界面了`);
+                target[propName] = value
+            },
+            // 删除p的某个属性时调用
+            deleteProperty(target,propName){
+                console.log(`有人删除了p身上的${propName}属性,我要去更新界面了`);   
+                return delete target[propName]
+            }
+        })     */
+
+        let obj = {a:1,b:2}
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
