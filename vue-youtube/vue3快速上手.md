@@ -249,7 +249,7 @@ npm run dev
 - 两个小“坑”：
 
   - 监视reactive定义的响应式数据时：oldValue无法正确获取、强制开启了深度监视（deep配置失效）。
-  - 监视reactive定义的响应式数据中某个属性时：deep配置有效。
+  - 监视reactive定义的响应式数据中某个属性(属性的值是对象)时：deep配置有效。
   
   ```js
   //情况一：监视ref定义的响应式数据
@@ -283,7 +283,7 @@ npm run dev
   //特殊情况
   watch(()=>person.job,(newValue,oldValue)=>{
       console.log('person的job变化了',newValue,oldValue)
-  },{deep:true}) //此处由于监视的是reactive素定义的对象中的某个属性，所以deep配置有效
+  },{deep:true}) //此处由于监视的是reactive所定义的对象中的某个属性，所以deep配置有效
   ```
 
 ### 3.watchEffect函数
