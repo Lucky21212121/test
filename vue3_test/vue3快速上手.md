@@ -302,7 +302,8 @@ npm run dev
   watchEffect(()=>{
       const x1 = sum.value
       const x2 = person.age
-      console.log('watchEffect配置的回调执行了')
+      console.log('watchEffect配置的回调执行了',x1,x2)
+      // 但必须要使用x1和x2 否则会报错,
   })
   ```
 
@@ -346,13 +347,27 @@ npm run dev
 
 
 
-1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
   - ```beforeDestroy```改名为 ```beforeUnmount```
   - ```destroyed```改名为 ```unmounted```
 - Vue3.0也提供了 Composition API 形式的生命周期钩子，与Vue2.x中钩子对应关系如下：
-  - `beforeCreate`===>`setup()`
+  - `beforeCreate`===>`setup()`   
   - `created`=======>`setup()`
   - `beforeMount` ===>`onBeforeMount`
   - `mounted`=======>`onMounted`

@@ -1,7 +1,5 @@
 <template>
-  <h4>当前求和为:{{sum}}</h4>
-  <button @click="sum++">点击x++</button>
-  <hr>
+<h4>{{person}}</h4>
   <h2>姓名:{{name}}</h2>
   <h2>年龄:{{age}}</h2>
   <h2>薪资:{{job.j1.salary}}k</h2>
@@ -12,13 +10,12 @@
  </template>
  
  <script>
- import {ref,toRefs,reactive,} from 'vue'
+ import {reactive,toRefs} from 'vue'
  
  export default {
    name: 'Demo',
    setup(){
    // 数据
-   let sum =ref(0)
    let person =reactive({
      name:'张三',
      age:18,
@@ -28,22 +25,24 @@
        },
      }
    })
-  //  person =readonly(person)
-  //  person =shallowReadonly(person)
-  //  sum =readonly(sum)
-  //  sum =shallowReadonly(sum)
+  //  const name1 = person.name
+  //  console.log('@@@',name1);
 
+  //  const name2 = toRef(person,'name')
+  //  console.log('###',name2);
 
-
-   
-  
+  // const x =toRefs(person)
+  //  console.log("@@@@@@@@@",x);
  
 
    
    // 返回一个对象(常用)
-   return {   
+   return { 
+    person,
+    //  name:toRef(person,'name'),
+    //  age:toRef(person,'age'),
+    //  salary:toRef(person.job.j1,'salary'),
     ...toRefs(person),
-    sum,
    }
  
     
