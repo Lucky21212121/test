@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1 数组的解构赋值
+        // #region
+        console.log('###1数组的解构赋值###');
+        console.log('-----基本用法-----');
+        let [a,b,c] =[1,2,3]
+        console.log(a,b,c);
+        let[foo,[[bar],baz]] =[4,[[5],6]]
+        console.log(foo,bar,baz);
+        let [,,third] = ["foo","bar","baz"]
+        console.log(third);
+        let [x,,y] = [7,8,9]
+        console.log(x,y);
+        let [head,...tail] = [10,11,12,13]
+        console.log(head,tail);
+        let [x1,y1,...z1] = ['a'];
+        console.log(x1,y1,z1);
+        let [foo1] = []
+        console.log(foo1);
+        let [bar1,foo2] = [1]
+        console.log(bar1,foo2);
+        let [x2,y2,z2] = new Set(['a','b','c'])
+        console.log(x2,y2,z2);
+        function* fibs(){
+            let a2 = 0;
+            let b2 = 1;
+            while(true){
+                yield a2 ;
+                [a2,b2]=[b2,a2+b2];
+            }
+        }
+        let [first,second,third1,fourth,fifth,sixth] = fibs();
+        console.log('fibs函数',first,second,third1,fourth,fifth,sixth);
+        console.log('----默认值-----');
+        let [foo3 = true] = []
+        console.log(foo3); // true
+        let[x3,y3 = 'b'] = ['a']
+        console.log(x3,y3); // a b
+        let [x4,y4 = 'b'] = ['a',undefined]
+        console.log(x4,y4); // a b
+        let [x5 = 1] =[undefined]
+        console.log(x5); // 1
+        let [x6 = 1]=[null]
+        console.log(x6); // null
+        function f(){
+            console.log('aaa');
+        }
+        let [x7 = f()]=[1]
+        console.log(x7); // 1
+
+        let x8
+        if([1][0]===undefined){
+            x8=f()
+        }else{
+            x8=[1][0]
+        }
+        console.log(x8); // 1
+        console.log([1][0]); // 1
+        console.log('@@@',f()); // aaa  // @@@ undefined
+
+        let [x9=1,y5=x9] = []
+        console.log(x9,y5); // 1 1
+        let [x10 = 1,y6=x10] =[2]
+        console.log(x10,y6); // 2 2
+        let [x11=1,y7=x11] = [1,2]
+        console.log(x11,y7); // 1 2
+        // let [x12 = y8,y8=1] = []
+        // console.log(x12,y8); // y8还未声明
+
+        // #endregion
+
+        // 2 对象的解构赋值
+        //  #region
+        console.log('###2对象的解构赋值###');
+        console.log('----简介----');
+        let {foo4,bar2} = {foo4:'aaa',bar2:'bbb'}
+        console.log(foo4,bar2);
+        let {bar3,foo5}={foo5:'aaa',bar3:'bbb'}
+        console.log(foo5,bar3);
+        let{baz1}={foo5:'aaa',bar3:'bbb'}
+        console.log(baz1);
+        let {foo6}={bar4:'baz'}
+        console.log(foo6);
+        
+        let {log,sin,cos} = Math
+        console.log('没懂',log,sin,cos);
+        // const {log} = console
+        // log('hello') // hello
+
+        
+
+
+
+        // #endregion
+
+     
+        
+    </script>
+</body>
+</html>
