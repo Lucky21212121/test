@@ -7,7 +7,7 @@
       <Weatherinfo/>
 
    </div>
- 
+ <Weatheranimate/>
 </div>
 </template>
 
@@ -15,12 +15,13 @@
 import Weathersearch from './components/Weathersearch.vue'
 import Weathermain from './components/Weathermain.vue'
 import Weatherinfo from './components/Weatherinfo.vue'
+import Weatheranimate from './components/Weatheranimate.vue'
 
 
 
 export default{
    name:'App',
-   components:{Weathersearch,Weathermain,Weatherinfo}
+   components:{Weathersearch,Weathermain,Weatherinfo,Weatheranimate}
 }
 </script>
 

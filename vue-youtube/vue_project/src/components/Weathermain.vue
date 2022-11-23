@@ -3,7 +3,7 @@
          <div class="weather-feelsLike">
             feels like
             <strong>13</strong>
-            <sup>°</sup>
+            <sup>°</sup>   
          </div>
          <div class="weather-temp">
             <div class="weather-icon"></div>
@@ -13,7 +13,7 @@
          <div class="weather-description">broken clouds</div>
       </div>
 </template>
-
+   
 <script>
 export default{
     name:'Weathermain',
@@ -58,9 +58,10 @@ export default{
    left:-35px;
    width: 110px;
    height: 110px;
-   background-image: url(./images/cloud.png);
+   background-image: url(../images/cloud.png);
    background-repeat: no-repeat;
    background-size: 100%;
+   filter: drop-shadow(1px 1px 0 rgba(0,0,0,.03)) drop-shadow(-5px -5px 0 rgba(0,0,0,.03));
 }
 .tem{
    font-size:80px;

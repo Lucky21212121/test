@@ -1,15 +1,38 @@
 <template>
 <div class="why">
          <div class="weather-search">
-         <input type="text" placeholder="请输入城市名" class="search-control">
-         <span class="country">()</span>
+         <input 
+         type="text" 
+         placeholder="请输入城市名" 
+         class="search-control"
+         v-model.trim="search"
+         @keydown.enter="getData"  
+         >
+         <span class="country">({{getWearherCountry}})</span>
+         <div class="err"></div>
       </div>
-    </div>
+    </div>   
 </template>
 
 <script>
+import  {mapActions,mapGetters} from 'vuex'
 export default{
     name:'Weathersearch',
+    data(){
+      return{
+         search: this.$store.state.search
+      }
+    },
+    computed:{
+      ...mapGetters(['getWearherCountry'])
+    },
+    methods:{
+      ...mapActions(['fecthWeatherData']),
+      getData(){
+         this.fecthWeatherData(this.search)
+
+      }
+    }
 }
 </script>
 

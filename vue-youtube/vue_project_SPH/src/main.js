@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import store from './store/store'
+
 
 // 关闭Vue的生产提示
 Vue.config.productionTip=false
@@ -15,7 +15,7 @@ Vue.config.productionTip=false
  new Vue({
     el:'#App',
     render:(h)=>h(App),
-    store,
+   
    
    
 })
