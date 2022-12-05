@@ -10,8 +10,8 @@
     <script>
         // 创建一个promise对象
         const p =new Promise((resolve,reject)=>{
-            // resolve('用户数据')
-            reject('失败了')
+            resolve('用户数据')
+            // reject('失败了')
         })
         // await要放在async函数中  单向依赖
         async function main(){

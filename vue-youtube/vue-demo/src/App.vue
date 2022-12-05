@@ -1,46 +1,25 @@
 <template>
-   <div id="app" >
-      <!-- <div class="card"> 
-        
-         <div>搜索组件</div>
-         <div>main组件</div>
-         <div>info组件</div>
-      </div> -->
-      <Flex/>
-   
-   
+
+  <div class="container">
+    <Search/>
+   <List/>
   </div>
 
 </template>
 
 <script>
-// import WeatherSearch from './components/WeatherSearch.vue';
-import Flex from './flex.vue';
+import Search from './components/Search.vue'
+import List from './components/List.vue'
+
 export default{
     name:'App',
-   //  components:{WeatherSearch,}
-    components:{Flex,}
-
-   
-   }
+    components:{Search,List}
+    
+    }
   
 </script>
 
-<style lang="less" >
-:root {
-   --aaa:360px;
-   --bbb:#f1f1f1;
-
-}
-
-
-
-.card {
-   max-width:var(--aaa);
-   width:100%;
-   background-color:var(--bbb);
-
-}
+<style>
 
 
 </style>
