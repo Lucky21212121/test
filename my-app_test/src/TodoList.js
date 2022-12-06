@@ -1,8 +1,9 @@
 import React,{Component} from "react";
 import store from './store/index'
-import  'antd'
-import { Input, Button,List} from 'antd';
-import {getInputChangeAction,getBtnClickAction,getDeleteItemAction} from './store/actionCreators'
+import TodoListUI from "./TodoListUI";
+import axios from "axios";
+
+import {getInputChangeAction,getBtnClickAction,getDeleteItemAction,initListAction} from './store/actionCreators'
 // import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionTypes'
 
 class TodoList extends Component {
@@ -12,37 +13,28 @@ class TodoList extends Component {
         this.handleInputChange=this.handleInputChange.bind(this)
         this.handleStoreChange=this.handleStoreChange.bind(this)
         this.handleBtnClick=this.handleBtnClick.bind(this)
+        this.handleDeleteItem=this.handleDeleteItem.bind(this)
         store.subscribe(this.handleStoreChange)
     }
     render(){
         return(
-            <div>
-            <div style={{marginTop:'10px',marginLeft:'10px'}} >
-            <Input 
-            placeholder="Todo info" 
-            style={{width:'300px'}}
-            value={this.state.inputValue}
-            onChange={this.handleInputChange}
-             />
-            <Button 
-            type="primary" 
-            style={{marginLeft:'10px'}} 
-            onClick={this.handleBtnClick}
-            >提交</Button>
-            </div>
-            <List
-            style={{width:'300px',marginLeft:'10px',marginTop:'10PX'}}
-               bordered
-               dataSource={this.state.list}
-               renderItem={(item,index) => (
-               <List.Item
-               onClick={this.handleDeleteItem.bind(this,index)}>
-                 {item}
-               </List.Item>
-                )}
-                 />
-            </div>
+            <TodoListUI
+            inputValue={this.state.inputValue}
+            list={this.state.list}
+            handleInputChange={this.handleInputChange}
+            handleBtnClick={this.handleBtnClick}
+            handleDeleteItem={this.handleDeleteItem}
+            />
         )
+    }
+    componentDidMount(){
+        axios.get('http://localhost:10086').then((res)=>{
+            const data = res.data
+            // console.log(data);
+            const action = initListAction(data)
+            store.dispatch(action)
+
+        })
     }
     handleInputChange(e){
         /* const action ={
