@@ -1,28 +1,13 @@
-import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM,INIT_LIST_ACTION} from './actionTypes'
-import axios from "axios";
-export const getInputChangeAction=(value)=>({
-    type:CHANGE_INPUT_VALUE,
+import {INPUT_CHANGE,DELETE_ITEM,ADD_ITEM} from './actionTypes'
+export const getInputChange = (value)=>({
+    type:INPUT_CHANGE,
     value
 })
-export const getBtnClickAction=()=>({
-    type:ADD_TODO_ITEM,  
+export const getAddItem = ()=>({
+     type:ADD_ITEM
 })
-export const getDeleteItemAction=(index)=>({
-    type:DELETE_TODO_ITEM, 
-    index  
-})
-export const initListAction=(data)=>({
-    type:INIT_LIST_ACTION,
-    data
 
+export const getDeleteItem = (index)=>({
+    type:DELETE_ITEM,
+    index
 })
-export const getTodoList=()=>{
-    return (dispatch)=>{
-        axios.get('http://localhost:10086').then((res)=>{
-            const data = res.data
-            const action =initListAction(data)
-            dispatch(action)
-            // console.log(data);
-        })
-    }
-}
