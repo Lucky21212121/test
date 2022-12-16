@@ -80,5 +80,48 @@ width:280px;
 export const RecommendItem =styled.div`
 width:280px;
 height:50px;
-background:url(https://tenfei04.cfp.cn/creative/vcg/veer/1600water/veer-300868548.jpg)
+background:url(${(props)=> props.imgUrl});
+bacKground-size:contain;
+`;
+
+export const WritterWrapper =styled.div`
+width:280px;
+height:300px;
+`;
+export const WritterTitle = styled.div`
+height:20px;
+width:278px;
+.recomwritter {
+    float:left;
+    font-size:14px;
+    line-height:20px;
+    color:#969696;
+}
+.changewritter{
+    display:block;
+    float:right;
+    font-size:14px;
+    line-height:20px;
+    color:#969696;
+}
+`;
+export const WritterList =styled.div`
+width:280px;
+height:295px;
+`;
+export const WritterItem =styled.div`
+height:47px;
+width:278px;
+margin-top:15px;
+.writer-pic {
+    display:block;
+    weight:48px;
+    height:48px;
+    border-radius:48px;
+},
+.writtername{
+    display:block;
+    color:#2f2f2f;
+    font-size:14px;
+}
 `;
