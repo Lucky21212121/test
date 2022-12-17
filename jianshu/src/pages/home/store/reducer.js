@@ -4,7 +4,8 @@ import * as constants from "./constants"
 const defaultState=fromJS ({
     topicList:[],
     articleList:[],
-    recommondList:[]
+    recommondList:[],
+    writterList:[]
 });
 
 export default (state=defaultState,action)=>{
@@ -13,7 +14,8 @@ export default (state=defaultState,action)=>{
         return state.merge({
             topicList:fromJS(action.topicList),
             articleList:fromJS(action.articleList),
-            recommondList:fromJS(action.recommondList)
+            recommondList:fromJS(action.recommondList),
+            writterList:fromJS(action.writterList)
          })
 
         default: return state 

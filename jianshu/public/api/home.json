@@ -76,6 +76,38 @@
     {
         "id":4,
         "imgUrl":"https://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png"
-    }]
+    }],
+
+    "writterList":[{
+        "id":1,
+        "name":"须僧",
+        "jianjie":"写了22.8k字 8.9k喜欢",
+        "imgUrl":"https://cdn2.jianshu.io/assets/default_avatar/8-a356878e44b45ab268a3b0bbaaadeeb7.jpg"
+    },
+    {
+        "id":2,
+        "name":"茶点故事",
+        "jianjie":"写了4396.9k字 · 16.6k喜欢",
+        "imgUrl":"https://img2.woyaogexing.com/2022/12/14/b79fcceaa098276b7f1c7ccfb7e90dc3.png"
+    },
+    {
+        "id":3,
+        "name":"吴晓布",
+        "jianjie":"写了757.3k字 · 25.4k喜欢",
+        "imgUrl":"https://img2.woyaogexing.com/2022/12/15/f457792ff573125f432da90cb1bb1be8.jpg"
+    },
+    {
+        "id":4,
+        "name":"Hobbit霍比特人",
+        "jianjie":"写了757.3k字 · 25.4k喜欢",
+        "imgUrl":"https://upload.jianshu.io/users/upload_avatars/7133325/f4370cf6-cf4d-4839-9b54-87beaa767d48?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp"
+    },
+    {
+        "id":5,
+        "name":"南星",
+        "jianjie":"写了757.3k字 · 25.4k喜欢",
+        "imgUrl":"https://img2.woyaogexing.com/2022/12/16/86b2b06af43d32de05ddaf72bc6514bd.jpg"
     }
+    ]
+}
 }

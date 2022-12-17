@@ -87,6 +87,19 @@ bacKground-size:contain;
 export const WritterWrapper =styled.div`
 width:280px;
 height:300px;
+.chakanquanbu{
+    display:block;
+    margin-top:10px;
+    padding: 7px 7px 7px 12px;
+    font-size:13px;
+    text-align:center;
+    color:#787878;
+    background-color:#f7f7f7;
+    border:1px solid #dcdcdc;
+    border-radius:4px;
+    
+
+}
 `;
 export const WritterTitle = styled.div`
 height:20px;
@@ -100,28 +113,55 @@ width:278px;
 .changewritter{
     display:block;
     float:right;
-    font-size:14px;
+    font-size:13px;
     line-height:20px;
     color:#969696;
+    cursor:pointer;
 }
 `;
-export const WritterList =styled.div`
+export const WritterList =styled.ul`
 width:280px;
 height:295px;
 `;
-export const WritterItem =styled.div`
-height:47px;
-width:278px;
+export const WritterItem =styled.li`
+display:flex;
+justify-content:space-between;
 margin-top:15px;
-.writer-pic {
-    display:block;
-    weight:48px;
+width:278px;
+height:47px;
+.write{
     height:48px;
-    border-radius:48px;
-},
-.writtername{
+    width:200px;
+}
+.writter{
     display:block;
-    color:#2f2f2f;
-    font-size:14px;
+    float:left;
+    width:48px;
+    height:48px;
+    cursor:pointer; 
+}
+.writter-pic{
+    width:100%;
+    height:100%;
+    border-radius:50%;   
+}
+.writter-name{
+    margin-left:10px;
+    font-size: 14px;
+}
+.writter-jianjie{
+    margin-left:60px;
+    margin-top:10px;
+    height:20px;
+    line-height:20px;
+    font-size: 12px;
+    color: #969696;
+}
+.writter-guanzhu{
+    float: right;
+    margin-top: 5px;
+    padding: 0;
+    font-size: 13px;
+    color: #42c02e;
 }
 `;
