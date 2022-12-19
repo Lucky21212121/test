@@ -5,7 +5,7 @@ const changeHomeData =(result)=>({
     articleList:result.articleList,
     recommondList:result.recommondList,
     topicList:result.topicList,
-    writterList:result.writterList
+    writterList:result.writterList,
 })
 export  const getHomeInfo =()=>{
     return (dispatch)=>{

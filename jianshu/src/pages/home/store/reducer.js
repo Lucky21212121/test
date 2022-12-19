@@ -5,7 +5,10 @@ const defaultState=fromJS ({
     topicList:[],
     articleList:[],
     recommondList:[],
-    writterList:[]
+    writterList:[],
+    writterPage:1,
+    writterTotalPage:1,
+  
 });
 
 export default (state=defaultState,action)=>{
@@ -15,7 +18,8 @@ export default (state=defaultState,action)=>{
             topicList:fromJS(action.topicList),
             articleList:fromJS(action.articleList),
             recommondList:fromJS(action.recommondList),
-            writterList:fromJS(action.writterList)
+            writterList:fromJS(action.writterList),
+            writterTotalPage:fromJS(action.writterList.length) 
          })
 
         default: return state 
