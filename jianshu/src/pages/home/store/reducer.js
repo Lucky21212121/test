@@ -5,9 +5,9 @@ const defaultState=fromJS ({
     topicList:[],
     articleList:[],
     recommondList:[],
-    writterList:[],
-    writterPage:1,
-    writterTotalPage:1,
+    articlePage:1,
+   
+    
   
 });
 
@@ -18,9 +18,15 @@ export default (state=defaultState,action)=>{
             topicList:fromJS(action.topicList),
             articleList:fromJS(action.articleList),
             recommondList:fromJS(action.recommondList),
-            writterList:fromJS(action.writterList),
-            writterTotalPage:fromJS(action.writterList.length) 
+    
          })
+         case constants.ADD_HOME_LIST:
+         return state.merge({
+            articleList:state.get('articleList').concat(action.list),
+            articlePage:action.nextPage
+         })
+         
+         
 
         default: return state 
 
