@@ -119,6 +119,14 @@ width:278px;
     color:#969696;
     cursor:pointer;
 }
+.spin {
+    display:block; // 第一要是block 
+    float:left; // 第二可以浮动在左边
+    font-size:12px;
+    transition:all .2s ease-in; // 动画效果第一步
+    // transform:rotate(0deg);  0的意思跟不写是一样的 动画效果第二步
+    transform-orgin:center center; // 动画效果第三步
+}
 `;
 export const WritterList =styled.ul`
 width:280px;

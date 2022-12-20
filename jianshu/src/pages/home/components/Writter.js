@@ -41,9 +41,9 @@ class Writter extends Component {
                 <WritterTitle>
                     <span className="recomwritter">推荐作者</span>
                     <a className="changewritter"
-                    onClick={()=>this.handleChangePage(allList)}
+                    onClick={()=>this.handleChangePage(allList,this.spinIcon)}
                     > 
-                    <i className="iconfont">&#xe851;</i>
+                    <i  ref={(icon)=>{this.spinIcon=icon}} className="iconfont spin ">&#xe851;</i>
                         换一批</a>
                 </WritterTitle>
                 <WritterList>
@@ -68,11 +68,9 @@ class Writter extends Component {
             </WritterWrapper>
         )
     }
-    handleChangePage(e){
-    
+    handleChangePage(e,spin){
      let data=e.a+1
      let domdta=this.state.listF.filter(item=>item.a===data)
-     
         if(e.a===4){
             this.setState({
                 allList:this.state.listF[0]
@@ -82,6 +80,16 @@ class Writter extends Component {
             allList:domdta[0]
         })
         }
+        // console.log( spin.style.transform);
+        // 拿到原始角度 originAngle:replace用来如果不是0-9的数字 那么输出为空
+        let originAngle =spin.style.transform.replace(/[^0-9]/ig,'')
+        // console.log(originAngle);
+            if(originAngle){
+                originAngle=parseInt(originAngle,10);  // 以十进制的形式转换成数字
+            }else {
+                originAngle = 0;  // 否则等于0
+            }
+        spin.style.transform='rotate(' + (originAngle+360) + 'deg)';
         
     }
  
