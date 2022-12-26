@@ -1,7 +1,8 @@
 import React ,{Component} from "react";
 import {connect} from 'react-redux';
 import { CSSTransition } from "react-transition-group";
-import  {actionCreators}   from './store' 
+import  {actionCreators}   from './store' ;
+import {actionCreators as loginActionCreators} from "../../pages/login/store"
 import {
     HeaderWrapper,
     Logo,
@@ -54,7 +55,7 @@ class Header extends Component{
 
     }
     render(){
-        const {focused,handleInputFocus,handleInputBlur,list} =this.props 
+        const {focused,handleInputFocus,handleInputBlur,list,login,logout} =this.props 
         return (
             <HeaderWrapper>
                  <Logo/>
@@ -63,7 +64,9 @@ class Header extends Component{
                     <NavItem className="left">下载App</NavItem>
                     <NavItem className="left">会员</NavItem>
                     <NavItem className="left">IT技术</NavItem>
-                    <NavItem className="right">登录</NavItem>
+                    {
+                        login ? <NavItem onClick={logout} className="right">退出</NavItem> : <a href="/login"><NavItem className="right">登录</NavItem></a>
+                    }
                     <NavItem className="right">
                     <i className="iconfont">&#xe636;</i>
                     </NavItem>
@@ -103,6 +106,7 @@ class Header extends Component{
         page:state.getIn(['header','page']),
         totalPage:state.getIn(['header','totalPage']),
         mouseIn:state.getIn(['header','mouseIn']),
+        login:state.getIn(['login','login'])
        
 
     }
@@ -140,6 +144,9 @@ class Header extends Component{
             }else{
                 dispatch(actionCreators.changePage(1)); 
             }
+        },
+        logout(){
+            dispatch(loginActionCreators.logout())
         }
     }
    }
