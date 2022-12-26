@@ -1,7 +1,7 @@
-import React,{Component} from "react";
+import React,{PureComponent} from "react";
 import axios from "axios";
 import {WritterWrapper,WritterTitle,WritterList,WritterItem} from "../style";
-class Writter extends Component {
+class Writter extends PureComponent {
     constructor(props){
         super(props);
         this.state={
