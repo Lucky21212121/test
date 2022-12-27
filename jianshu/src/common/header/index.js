@@ -18,6 +18,7 @@ import {
     Addition,
     Button,   
 } from './style'
+import { Link } from "react-router-dom";
 class Header extends Component{
     getListArea(){
         const {focused,list,page,totalPage,mouseIn,handleMouseEnter,handleMouseLeave,handleChangePage} =this.props;
@@ -88,9 +89,10 @@ class Header extends Component{
                  </Nav>
                  <Addition>
                     <Button className="reg">注册</Button>
+                   <a href="/write">
                     <Button className="writting">
                     <i className="iconfont">&#xe6eb;</i>
-                        写文章</Button>
+                        写文章</Button></a>
                  </Addition>
                </HeaderWrapper>
         )

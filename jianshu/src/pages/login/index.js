@@ -2,12 +2,11 @@ import React,{PureComponent} from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import {actionCreators} from "./store";
-import {LoginWrapper,LoginBox,Input,Button} from "./style"
+import {LoginWrapper,LoginBox,Input,Button} from "./style";
 
 class Login extends PureComponent {
     render(){
         const {loginStaus} = this.props ;
-        console.log(loginStaus);
         if(!loginStaus){
             return (
                 <LoginWrapper>
@@ -19,7 +18,7 @@ class Login extends PureComponent {
                     </LoginWrapper>
             )
         }else {
-            return <Redirect to='/' />
+            return <Redirect to="/" />
 
         }
        
@@ -29,7 +28,7 @@ class Login extends PureComponent {
 const mapState=(state)=>({
     loginStaus:state.getIn(['login','login'])
 
-})
+});
 
 const mapDispatch =(dispatch)=>({
     login(accountElem,passwordElem){
@@ -37,5 +36,5 @@ const mapDispatch =(dispatch)=>({
         // console.log(accountElem.value,passwordElem.value);
     }
 
-})
-export  default connect(mapState,mapDispatch)(Login)
+});
+export  default connect(mapState,mapDispatch)(Login);

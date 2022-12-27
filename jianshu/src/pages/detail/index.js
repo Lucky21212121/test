@@ -1,6 +1,7 @@
 import React,{PureComponent} from "react";
-import { connect } from "react-redux"
-import {actionCreators} from "./store"
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import {actionCreators} from "./store";
 import {DetailWrapper,Header,Content} from "./style";
 
 class Detail extends PureComponent {
@@ -23,9 +24,9 @@ content:state.getIn(['detail','content'])
 });
 const mapDispatch =(dispatch)=>({
     getDeatil(id){
-        dispatch(actionCreators.getDeatil(id))
+        dispatch(actionCreators.getDeatil(id)) 
 
     }
 
 })
-export  default connect(mapState,mapDispatch)(Detail)
+export  default connect(mapState,mapDispatch)(withRouter(Detail))
