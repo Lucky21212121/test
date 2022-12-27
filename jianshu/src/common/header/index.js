@@ -66,7 +66,7 @@ class Header extends Component{
                     <NavItem className="left">会员</NavItem>
                     <NavItem className="left">IT技术</NavItem>
                     {
-                        login ? <NavItem onClick={logout} className="right">退出</NavItem> : <a href="/login"><NavItem className="right">登录</NavItem></a>
+                        login ? <NavItem onClick={logout} className="right">退出</NavItem> : <Link to="/login"><NavItem className="right">登录</NavItem></Link>
                     }
                     <NavItem className="right">
                     <i className="iconfont">&#xe636;</i>
@@ -89,10 +89,10 @@ class Header extends Component{
                  </Nav>
                  <Addition>
                     <Button className="reg">注册</Button>
-                   <a href="/write">
+                   <Link to="/write">
                     <Button className="writting">
                     <i className="iconfont">&#xe6eb;</i>
-                        写文章</Button></a>
+                        写文章</Button></Link>
                  </Addition>
                </HeaderWrapper>
         )

@@ -5,8 +5,14 @@ import {actionCreators} from "./store";
 import {LoginWrapper,LoginBox,Input,Button} from "./style";
 
 class Login extends PureComponent {
+
+
+
+
     render(){
         const {loginStaus} = this.props ;
+  
+        console.log(loginStaus)
         if(!loginStaus){
             return (
                 <LoginWrapper>
